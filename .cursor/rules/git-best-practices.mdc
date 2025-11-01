@@ -1,0 +1,146 @@
+---
+alwaysApply: true
+---
+
+# Git Best Practices for Small Projects
+
+## Commit Message Structure
+Follow conventional commit format with gitmojis for clarity:
+```
+<gitmoji> <type>: <description>
+
+[optional body]
+
+[optional footer]
+```
+
+### Types
+- ✨ `feat`: New feature
+- 🐛 `fix`: Bug fix
+- ♻️ `refactor`: Code restructuring without functional changes
+- ⚡ `perf`: Performance improvements
+- 📝 `docs`: Documentation changes
+- 🎨 `style`: Code style/formatting changes
+- ✅ `test`: Adding or modifying tests
+- 🔧 `chore`: Maintenance tasks, dependency updates
+- 🚀 `deploy`: Deployment related changes
+- 🔥 `remove`: Remove code or files
+- 🚚 `move`: Move or rename files
+- 💥 `breaking`: Breaking changes
+- 🔒 `security`: Security fixes
+
+### Examples
+```bash
+✨ feat: add user authentication system
+🐛 fix: resolve memory leak in data processing
+♻️ refactor: simplify distance calculation logic
+⚡ perf: optimize database queries with indexing
+📝 docs: update API documentation for v2.0
+🔧 chore: update dependencies to latest versions
+🚀 deploy: configure production environment
+🔒 security: fix SQL injection vulnerability
+```
+
+## Commit Guidelines
+
+### Single Responsibility
+- One logical change per commit
+- If using "and" in commit message, consider splitting
+
+### Descriptive Messages
+- Use imperative mood ("add" not "added")
+- Be specific about what changed
+- Include context for non-obvious changes
+
+### Staging Strategy
+```bash
+# Review changes before committing
+git diff
+git add -p  # Interactive staging for precise control
+git status  # Final verification
+```
+
+## Branch Management
+
+### Simple Workflow for Solo Projects
+- `main`: Production-ready code
+- `feature/description`: New features
+- `fix/description`: Bug fixes
+- `experiment/description`: Exploratory work
+
+### Branch Operations
+```bash
+# Create and switch to feature branch
+git checkout -b feature/new-optimization
+
+# Regular commits during development
+git add . && git commit -m "✨ feat: implement initial optimization"
+
+# Merge back to main when complete
+git checkout main
+git merge feature/new-optimization
+git branch -d feature/new-optimization
+```
+
+## Pre-Commit Checks
+Always verify before committing:
+1. Code runs without errors
+2. Tests pass (if applicable)
+3. No debug code or console.logs left behind
+4. Files are properly formatted
+5. Sensitive data is not included
+
+## Repository Hygiene
+
+### Regular Maintenance
+```bash
+# Clean up merged branches
+git branch --merged | grep -v main | xargs git branch -d
+
+# Update .gitignore for new file types
+# Commit dependency updates separately
+```
+
+### File Organization
+- Group related changes in single commits
+- Use `git add -A` carefully - prefer explicit file staging
+- Keep commits focused and atomic
+
+## Emergency Procedures
+
+### Quick Fixes
+```bash
+# Amend last commit if not pushed
+git add . && git commit --amend --no-edit
+
+# Reset soft for reworking recent commits
+git reset --soft HEAD~1
+```
+
+### Recovery
+```bash
+# View commit history
+git log --oneline -10
+
+# Recover lost commits
+git reflog
+```
+
+## Integration with Development Tools
+
+### With uv (Python)
+```bash
+# Separate dependency changes
+uv add new-package
+git add pyproject.toml uv.lock
+git commit -m "🔧 chore: add new-package dependency"
+
+# Then commit feature that uses it
+git add src/
+git commit -m "✨ feat: implement feature using new-package"
+```
+
+### Documentation Updates
+- Update relevant docs in same commit as code changes
+- Separate major documentation overhauls
+- Include examples in commit messages for complex changes
