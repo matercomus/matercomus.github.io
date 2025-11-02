@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogCard from '../../components/BlogCard.astro';
+import { BlogCard } from '../../components/BlogCard';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
@@ -10,20 +10,23 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<section class="max-w-5xl mx-auto px-4 py-8">
-		<h1 class="text-4xl font-bold mb-8">Blog</h1>
-		<ul class="grid grid-cols-1 md:grid-cols-2 gap-8 list-none">
-			{posts.map((post, index) => (
-				<div class={index === 0 ? 'md:col-span-2' : ''}>
-					<BlogCard 
-						href={`/blog/${post.id}/`}
-						title={post.data.title}
-						pubDate={post.data.pubDate}
-						heroImage={post.data.heroImage}
-						featured={index === 0}
-					/>
-				</div>
-			))}
-		</ul>
+	<section class="container py-12">
+		<div class="max-w-5xl mx-auto space-y-8">
+			<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Blog</h1>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+				{posts.map((post, index) => (
+					<div class={index === 0 ? 'md:col-span-2' : ''}>
+						<BlogCard 
+							client:load
+							href={`/blog/${post.id}/`}
+							title={post.data.title}
+							pubDate={post.data.pubDate}
+							heroImage={post.data.heroImage?.src}
+							featured={index === 0}
+						/>
+					</div>
+				))}
+			</div>
+		</div>
 	</section>
 </BaseLayout>
