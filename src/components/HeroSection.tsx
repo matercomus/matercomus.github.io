@@ -25,7 +25,7 @@ export function HeroSection({
 	imageAlt,
 }: HeroSectionProps) {
 	return (
-		<section className="container py-24 md:py-32">
+		<section className="container py-24 md:py-36">
 			<div className="grid gap-12 lg:grid-cols-2 items-center">
 				{/* Image Side */}
 				<div className="order-2 lg:order-1">
