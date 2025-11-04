@@ -55,7 +55,8 @@ To enable it:
 
 3. Update the workflow file:
    - Edit `.github/workflows/mirror-to-gitlab.yml`
-   - Replace `matercomus/mateusz-kedzia` with your actual GitLab project path (e.g., `username/project-name`)
+   - Replace `matercomus/mateusz-kedzia` with your actual GitLab project path
+   - **Current project path:** `matercomus/matercomus`
 
 Now every push to GitHub will automatically mirror to GitLab!
 
