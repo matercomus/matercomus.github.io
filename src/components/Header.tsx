@@ -1,21 +1,53 @@
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 
 interface HeaderProps {
 	currentPath: string;
 }
 
-const navLinks = [
-	{ href: "/", label: "About" },
-	{ href: "/projects", label: "Projects" },
-	{ href: "/blog", label: "Blog" },
-	{ href: "/cv", label: "Resume" },
+// Get base URL - works at build time in Astro, falls back to runtime detection
+const getBaseUrl = () => {
+	// Try to get from Astro's build-time env
+	if (typeof import.meta !== 'undefined' && import.meta.env?.BASE_URL) {
+		return import.meta.env.BASE_URL;
+	}
+	// Fallback: detect from current pathname
+	if (typeof window !== 'undefined') {
+		const path = window.location.pathname;
+		// If path starts with /personal-site/, use that as base
+		if (path.startsWith('/personal-site/')) {
+			return '/personal-site/';
+		}
+	}
+	return '/';
+};
+
+const navLinks = (baseUrl: string) => [
+	{ href: baseUrl === '/' ? '/' : baseUrl.replace(/\/$/, ''), label: "About" },
+	{ href: `${baseUrl}projects`, label: "Projects" },
+	{ href: `${baseUrl}blog`, label: "Blog" },
+	{ href: `${baseUrl}cv`, label: "Resume" },
 ];
 
 export function Header({ currentPath }: HeaderProps) {
+	const [baseUrl, setBaseUrl] = useState(getBaseUrl());
+	const links = navLinks(baseUrl);
+
+	// Ensure base URL is set correctly on mount
+	useEffect(() => {
+		const detectedBase = getBaseUrl();
+		if (detectedBase !== baseUrl) {
+			setBaseUrl(detectedBase);
+		}
+	}, []);
+
 	const isActive = (href: string) => {
-		if (href === "/") return currentPath === "/";
+		const normalizedHref = href === baseUrl || href === baseUrl.replace(/\/$/, '') || (baseUrl === '/' && href === '/');
+		if (normalizedHref) return currentPath === baseUrl || currentPath === baseUrl.replace(/\/$/, '') || (baseUrl === '/' && currentPath === '/');
 		return currentPath.startsWith(href);
 	};
+
+	const homeHref = baseUrl === '/' ? '/' : baseUrl.replace(/\/$/, '');
 
 	return (
 		<header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 print:hidden" style={{ display: 'block' }}>
@@ -29,11 +61,11 @@ export function Header({ currentPath }: HeaderProps) {
 			`}</style>
 			<div className="container flex h-16 items-center justify-between">
 				<Button asChild variant="link" size="lg" className="font-bold text-lg px-4 mr-4">
-					<a href="/">Mateusz Kędzia</a>
+					<a href={homeHref}>Mateusz Kędzia</a>
 				</Button>
 				
 				<nav className="flex items-center gap-1">
-					{navLinks.map((link) => (
+					{links.map((link) => (
 						<Button
 							key={link.href}
 							variant={isActive(link.href) ? "default" : "ghost"}
