@@ -1,0 +1,12 @@
+---
+import { redirect } from 'astro:actions';
+---
+
+<Fragment set:html={`
+	<script>
+		window.location.href = '/cv';
+	</script>
+	<meta http-equiv="refresh" content="0; url=/cv">
+	<p>Redirecting to <a href="/cv">/cv</a>...</p>
+`} />
+
