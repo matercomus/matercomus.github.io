@@ -5,6 +5,11 @@ language: 'en'
 
 import CVHeader from '../../components/cv/CVHeader.astro';
 import CVSection from '../../components/cv/CVSection.astro';
+import CVProject from '../../components/cv/CVProject.astro';
+import CVSkillItem from '../../components/cv/CVSkillItem.astro';
+import CVListItem from '../../components/cv/CVListItem.astro';
+import CVEducationItem from '../../components/cv/CVEducationItem.astro';
+import CVTwoColumn from '../../components/cv/CVTwoColumn.astro';
 
 <div class="mx-auto py-10 px-6">
 	<CVHeader 
@@ -23,83 +28,89 @@ import CVSection from '../../components/cv/CVSection.astro';
 		</CVSection>
 
 		<CVSection icon="fa-solid fa-graduation-cap" title="Education & Languages" variant="two-column">
-			<div class="flex-1">
-				<div class="flex items-center text-xl font-semibold mb-2"><i class="fa-solid fa-graduation-cap mr-2"></i>Education Background</div>
-				<div class="ml-6 space-y-2">
-					<div>
-						<span class="font-semibold">2023.09 - 2025.08</span> | Vrije Universiteit Amsterdam<br/>
-						Artificial Intelligence, <span class="italic">Master's</span>
-					</div>
-					<div>
-						<span class="font-semibold">2019.09 - 2023.08</span> | Vrije Universiteit Amsterdam<br/>
-						Artificial Intelligence, <span class="italic">Bachelor's</span>
-					</div>
+			<CVTwoColumn 
+				leftTitle="Education Background"
+				leftIcon="fa-solid fa-graduation-cap"
+				rightTitle="Language Abilities"
+				rightIcon="fa-solid fa-language"
+			>
+				<div slot="left">
+					<CVEducationItem 
+						date="2023.09 - 2025.08"
+						institution="Vrije Universiteit Amsterdam"
+						degree='Artificial Intelligence, <span class="italic">Master\'s</span>'
+					/>
+					<CVEducationItem 
+						date="2019.09 - 2023.08"
+						institution="Vrije Universiteit Amsterdam"
+						degree='Artificial Intelligence, <span class="italic">Bachelor\'s</span>'
+					/>
 				</div>
-			</div>
-			<div class="flex-1 mt-8 md:mt-0">
-				<div class="flex items-center text-xl font-semibold mb-2 md:justify-end"><i class="fa-solid fa-language mr-2"></i>Language Abilities</div>
-				<div class="ml-6 md:ml-0 md:text-right text-gray-700 space-y-1">
+				<div slot="right">
 					<div>Polish (Native)</div>
 					<div>English (Fluent)</div>
 					<div>Chinese (HSK2)</div>
 					<div>Spanish (Basic)</div>
 					<div>Dutch (Basic)</div>
 				</div>
-			</div>
+			</CVTwoColumn>
 		</CVSection>
 
 		<CVSection icon="fa-solid fa-trophy" title="Major Projects and Achievements">
 			<div class="space-y-4 text-gray-700">
-				<div>
-					<span class="font-bold">Master's Thesis: Synthetic Spatio-Temporal Ride-Hailing Traffic Knowledge Graph (In Progress)</span> (2024.07-2025.03)<br/>
-					Vrije Universiteit Amsterdam & Beijing University of Technology<br/>
-					<span class="text-gray-700">Background:</span> Urban transportation research requires advanced spatio-temporal data modeling and classification methods.<br/>
-					<span class="text-gray-700">Task:</span> Develop and evaluate large-scale spatio-temporal knowledge graph generation and trajectory classification algorithms.<br/>
-					<span class="text-gray-700">Action:</span> Designed and implemented models based on GAN, LSTM-AE, and SSVM, conducting comprehensive benchmark testing.<br/>
-					<span class="text-gray-700">Result:</span> Advanced cutting-edge research in urban transportation data analysis and contributed to academic papers.<br/>
-					<span class="text-gray-700">Reflection:</span> Deepened my professional capabilities in spatio-temporal modeling and enhanced my ability to solve open research problems.
-				</div>
-				<div>
-					<span class="font-bold">HedgeIoT: IoT Data Science Platform and Machine Learning Engineering</span><br/>
-					Vrije Universiteit Amsterdam (2024.07-2024.09)<br/>
-					<span class="text-gray-700">Background:</span> The university needed a scalable collaborative IoT and machine learning research platform.<br/>
-					<span class="text-gray-700">Task:</span> As a research assistant, responsible for platform design and deployment, implementing real-time data workflows.<br/>
-					<span class="text-gray-700">Action:</span> Built and deployed a Dockerized JupyterHub platform supporting 50+ users, designed real-time data collection and machine learning pipelines, led conference demonstration development.<br/>
-					<span class="text-gray-700">Result:</span> Platform achieved efficient collaboration and real-time data analysis, showcased at HedgeIoT conference, supporting 50+ researchers.<br/>
-					<span class="text-gray-700">Reflection:</span> Enhanced large-scale system design, cross-team communication, and practical machine learning deployment capabilities.
-				</div>
-				<div>
-					<span class="font-bold">Dutch News Archive Web Crawler</span><br/>
-					University of Amsterdam (2022.02-2025.03)<br/>
-					<span class="text-gray-700">Background:</span> Large-scale research requires high-integrity news datasets.<br/>
-					<span class="text-gray-700">Task:</span> Develop efficient web crawler for automated data extraction and structuring.<br/>
-					<span class="text-gray-700">Action:</span> Implemented anti-blocking and relevance filtering algorithms, automated processing of over 1 million news articles.<br/>
-					<span class="text-gray-700">Result:</span> Achieved 99% data integrity, providing reliable datasets for research.<br/>
-					<span class="text-gray-700">Reflection:</span> Enhanced automation, data quality assurance, and large-scale data engineering capabilities.
-				</div>
-				<div>
-					<span class="font-bold">Bachelor's Thesis: Explainable AI Processing of Heterogeneous IoT Data</span><br/>
-					Vrije Universiteit Amsterdam<br/>
-					<span class="text-gray-700">Background:</span> Integrating multi-source IoT data requires transparent, interoperable, and explainable AI solutions.<br/>
-					<span class="text-gray-700">Task:</span> Design explainable models and data pipelines to unify heterogeneous IoT data.<br/>
-					<span class="text-gray-700">Action:</span> Developed device behavior prediction models, implemented data integration based on RDF and SPARQL, ensuring model explainability.<br/>
-					<span class="text-gray-700">Result:</span> Delivered robust IoT data integration and prediction system, achieved 8.0 grade, demonstrating practical value of explainable AI and semantic data integration.<br/>
-					<span class="text-gray-700">Reflection:</span> Strengthened foundations in semantic data integration, time series prediction, and AI transparency.
-				</div>
+				<CVProject 
+					title="Master's Thesis: Synthetic Spatio-Temporal Ride-Hailing Traffic Knowledge Graph (In Progress)"
+					date="2024.07-2025.03"
+					organization="Vrije Universiteit Amsterdam & Beijing University of Technology"
+					background="Urban transportation research requires advanced spatio-temporal data modeling and classification methods."
+					task="Develop and evaluate large-scale spatio-temporal knowledge graph generation and trajectory classification algorithms."
+					action="Designed and implemented models based on GAN, LSTM-AE, and SSVM, conducting comprehensive benchmark testing."
+					result="Advanced cutting-edge research in urban transportation data analysis and contributed to academic papers."
+					reflection="Deepened my professional capabilities in spatio-temporal modeling and enhanced my ability to solve open research problems."
+				/>
+				<CVProject 
+					title="HedgeIoT: IoT Data Science Platform and Machine Learning Engineering"
+					date="2024.07-2024.09"
+					organization="Vrije Universiteit Amsterdam"
+					background="The university needed a scalable collaborative IoT and machine learning research platform."
+					task="As a research assistant, responsible for platform design and deployment, implementing real-time data workflows."
+					action="Built and deployed a Dockerized JupyterHub platform supporting 50+ users, designed real-time data collection and machine learning pipelines, led conference demonstration development."
+					result="Platform achieved efficient collaboration and real-time data analysis, showcased at HedgeIoT conference, supporting 50+ researchers."
+					reflection="Enhanced large-scale system design, cross-team communication, and practical machine learning deployment capabilities."
+				/>
+				<CVProject 
+					title="Dutch News Archive Web Crawler"
+					date="2022.02-2025.03"
+					organization="University of Amsterdam"
+					background="Large-scale research requires high-integrity news datasets."
+					task="Develop efficient web crawler for automated data extraction and structuring."
+					action="Implemented anti-blocking and relevance filtering algorithms, automated processing of over 1 million news articles."
+					result="Achieved 99% data integrity, providing reliable datasets for research."
+					reflection="Enhanced automation, data quality assurance, and large-scale data engineering capabilities."
+				/>
+				<CVProject 
+					title="Bachelor's Thesis: Explainable AI Processing of Heterogeneous IoT Data"
+					organization="Vrije Universiteit Amsterdam"
+					background="Integrating multi-source IoT data requires transparent, interoperable, and explainable AI solutions."
+					task="Design explainable models and data pipelines to unify heterogeneous IoT data."
+					action="Developed device behavior prediction models, implemented data integration based on RDF and SPARQL, ensuring model explainability."
+					result="Delivered robust IoT data integration and prediction system, achieved 8.0 grade, demonstrating practical value of explainable AI and semantic data integration."
+					reflection="Strengthened foundations in semantic data integration, time series prediction, and AI transparency."
+				/>
 			</div>
 		</CVSection>
 
 		<CVSection icon="fa-solid fa-gears" title="Technical Skills">
 			<div class="text-gray-700 space-y-1">
-				<div><span class="font-semibold">Programming:</span> Python (Advanced), Bash, SQL</div>
-				<div><span class="font-semibold">Machine Learning & Data:</span> PyTorch, TensorFlow, scikit-learn, XGBoost, Pandas, Polars, NumPy, Pydantic</div>
-				<div><span class="font-semibold">AI Agents & LLM Frameworks:</span> LangGraph, LangChain, LangSmith, Prompt Engineering, RAG Systems, Multi-agent Orchestration</div>
-				<div><span class="font-semibold">LLM Development & Evaluation:</span> Model Fine-tuning, Evaluation Dataset Creation, Performance Benchmarking, A/B Testing for AI Systems</div>
-				<div><span class="font-semibold">Web/API:</span> FastAPI, Flask, Django, Streamlit</div>
-				<div><span class="font-semibold">NLP & Large Models:</span> Transformers (Self-developed), Hugging Face (Speech Detection, Image to LaTeX), spaCy, NLTK, OpenAI API, Claude API</div>
-				<div><span class="font-semibold">Data Engineering:</span> GeoPandas, NetworkX, OSMnx, RDFlib, GraphDB, JupyterHub, Grafana, Vector Databases</div>
-				<div><span class="font-semibold">DevOps:</span> Docker, Docker Compose, NGINX, CI/CD, Linux (6+ years daily use)</div>
-				<div><span class="font-semibold">Remote/Advanced:</span> NVIM/LunarVim, Python multiprocessing/multithreading, LaTeX, Markdown</div>
+				<CVSkillItem label="Programming" content="Python (Advanced), Bash, SQL" />
+				<CVSkillItem label="Machine Learning & Data" content="PyTorch, TensorFlow, scikit-learn, XGBoost, Pandas, Polars, NumPy, Pydantic" />
+				<CVSkillItem label="AI Agents & LLM Frameworks" content="LangGraph, LangChain, LangSmith, Prompt Engineering, RAG Systems, Multi-agent Orchestration" />
+				<CVSkillItem label="LLM Development & Evaluation" content="Model Fine-tuning, Evaluation Dataset Creation, Performance Benchmarking, A/B Testing for AI Systems" />
+				<CVSkillItem label="Web/API" content="FastAPI, Flask, Django, Streamlit" />
+				<CVSkillItem label="NLP & Large Models" content="Transformers (Self-developed), Hugging Face (Speech Detection, Image to LaTeX), spaCy, NLTK, OpenAI API, Claude API" />
+				<CVSkillItem label="Data Engineering" content="GeoPandas, NetworkX, OSMnx, RDFlib, GraphDB, JupyterHub, Grafana, Vector Databases" />
+				<CVSkillItem label="DevOps" content="Docker, Docker Compose, NGINX, CI/CD, Linux (6+ years daily use)" />
+				<CVSkillItem label="Remote/Advanced" content="NVIM/LunarVim, Python multiprocessing/multithreading, LaTeX, Markdown" />
 			</div>
 		</CVSection>
 
@@ -109,12 +120,12 @@ import CVSection from '../../components/cv/CVSection.astro';
 
 		<CVSection icon="fa-solid fa-book" title="Core Courses">
 			<div class="text-gray-700 space-y-1">
-				<div><span class="font-semibold">Deep Learning:</span> Custom CNN, DNN implementation</div>
-				<div><span class="font-semibold">Natural Language Processing:</span> Transformers, Hugging Face, Advanced NLP</div>
-				<div><span class="font-semibold">Data Mining Techniques:</span> XGBoost ranking, Kaggle competitions</div>
-				<div><span class="font-semibold">Reinforcement Learning Projects:</span> Data center optimization RL</div>
-				<div><span class="font-semibold">Conversational Robot:</span> Dialogue agent based on OpenAI API, won first place in class competition (1/8 teams)</div>
-				<div><span class="font-semibold">Evolutionary Computing:</span> Custom evolutionary algorithms for game AI</div>
+				<CVListItem label="Deep Learning">Custom CNN, DNN implementation</CVListItem>
+				<CVListItem label="Natural Language Processing">Transformers, Hugging Face, Advanced NLP</CVListItem>
+				<CVListItem label="Data Mining Techniques">XGBoost ranking, Kaggle competitions</CVListItem>
+				<CVListItem label="Reinforcement Learning Projects">Data center optimization RL</CVListItem>
+				<CVListItem label="Conversational Robot">Dialogue agent based on OpenAI API, won first place in class competition (1/8 teams)</CVListItem>
+				<CVListItem label="Evolutionary Computing">Custom evolutionary algorithms for game AI</CVListItem>
 			</div>
 		</CVSection>
 	</div>

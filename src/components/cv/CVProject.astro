@@ -1,0 +1,56 @@
+---
+interface Props {
+	title: string;
+	date?: string;
+	organization?: string;
+	background?: string;
+	task?: string;
+	action?: string;
+	result?: string;
+	reflection?: string;
+}
+
+const { title, date, organization, background, task, action, result, reflection } = Astro.props;
+---
+
+<div class="text-gray-700">
+	<span class="font-bold">{title}</span>
+	{date && <> ({date})</>}
+	{organization && (
+		<>
+			<br/>
+			{organization}
+		</>
+	)}
+	{background && (
+		<>
+			<br/>
+			<span class="text-gray-700">Background:</span> {background}
+		</>
+	)}
+	{task && (
+		<>
+			<br/>
+			<span class="text-gray-700">Task:</span> {task}
+		</>
+	)}
+	{action && (
+		<>
+			<br/>
+			<span class="text-gray-700">Action:</span> {action}
+		</>
+	)}
+	{result && (
+		<>
+			<br/>
+			<span class="text-gray-700">Result:</span> {result}
+		</>
+	)}
+	{reflection && (
+		<>
+			<br/>
+			<span class="text-gray-700">Reflection:</span> {reflection}
+		</>
+	)}
+</div>
+
