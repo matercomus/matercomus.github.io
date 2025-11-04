@@ -5,7 +5,15 @@ pages:
   script:
     - npm ci
     # Set environment variables for Astro base path configuration
-    - export CI_PROJECT_NAME="personal-site"
+    # Check if using unique domain (serves from root) or standard domain (serves from /project-name/)
+    - |
+      if [ -n "$CI_PAGES_UNIQUE_DOMAIN" ]; then
+        # Unique domain - serve from root, no base path
+        export CI_PROJECT_NAME=""
+      else
+        # Standard domain - use project name as base path
+        export CI_PROJECT_NAME="personal-site"
+      fi
     - export CI_PAGES_URL="https://matercomus.gitlab.io/personal-site"
     - npm run build
     # GitLab Pages serves from 'public' directory, but Astro outputs to 'dist'

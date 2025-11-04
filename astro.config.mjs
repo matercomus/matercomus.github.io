@@ -15,7 +15,7 @@ export default defineConfig({
   site: process.env.CI_PAGES_URL 
     ? process.env.CI_PAGES_URL 
     : 'https://matercomus.github.io',
-  base: process.env.CI_PROJECT_NAME 
+  base: process.env.CI_PROJECT_NAME && process.env.CI_PROJECT_NAME !== ""
     ? `/${process.env.CI_PROJECT_NAME}/` 
     : undefined,
   integrations: [mdx(), sitemap(), react()],
