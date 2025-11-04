@@ -5,7 +5,7 @@ A modern, minimal personal website built with [Astro](https://astro.build), feat
 ## 🌐 Live Sites
 
 - **GitHub Pages**: [matercomus.github.io](https://matercomus.github.io/)
-- **GitLab Pages**: [matercomus.gitlab.io/matercomus](https://matercomus.gitlab.io/matercomus/)
+- **GitLab Pages**: [matercomus.gitlab.io/personal-site](https://matercomus.gitlab.io/personal-site/)
 
 The site is automatically mirrored to GitLab for access in regions where GitHub is blocked.
 

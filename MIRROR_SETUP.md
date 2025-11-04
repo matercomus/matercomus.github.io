@@ -56,7 +56,7 @@ To enable it:
 3. Update the workflow file:
    - Edit `.github/workflows/mirror-to-gitlab.yml`
    - Replace `matercomus/mateusz-kedzia` with your actual GitLab project path
-   - **Current project path:** `matercomus/matercomus`
+   - **Current project path:** `matercomus/personal-site`
 
 Now every push to GitHub will automatically mirror to GitLab!
 
@@ -64,8 +64,7 @@ Now every push to GitHub will automatically mirror to GitLab!
 
 1. Go to GitLab project → Settings → Pages
 2. The CI/CD pipeline will automatically deploy when you push to `main`
-3. Your site will be available at: `https://matercomus.gitlab.io/mateusz-kedzia/`
-   (Replace `mateusz-kedzia` with your actual project name)
+3. Your site will be available at: `https://matercomus.gitlab.io/personal-site/`
 
 ### 4. Base Path Configuration
 
