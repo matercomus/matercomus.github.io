@@ -12,25 +12,34 @@ This repository is mirrored to GitLab for access in regions where GitHub is bloc
 
 ### 2. Configure GitLab Mirror
 
-You can set up automatic mirroring in GitLab:
+**Note:** GitLab's free tier doesn't support pull mirrors. You need to use a push mirror or dual remotes.
 
-**Option A: GitLab Push Mirror (Recommended)**
-1. Go to your GitLab project → Settings → Repository → Mirroring repositories
-2. Add push mirror:
-   - Git repository URL: `git@github.com:matercomus/matercomus.github.io.git`
-   - Mirror direction: Push
-   - Authentication method: SSH key
-   - Add your SSH key to both GitHub and GitLab
-
-**Option B: Local Git Push to Both**
-Add GitLab as a second remote:
+**Option A: Dual Remote (Recommended - Easiest)**
+Add GitLab as a second remote that you push to alongside GitHub:
 ```bash
+# Add GitLab as a separate remote
 git remote add gitlab git@gitlab.com:matercomus/mateusz-kedzia.git
-git remote set-url --add --push origin git@github.com:matercomus/matercomus.github.io.git
-git remote set-url --add --push origin git@gitlab.com:matercomus/mateusz-kedzia.git
+
+# Now push to both when you make changes:
+git push origin main    # Pushes to GitHub
+git push gitlab main    # Pushes to GitLab
 ```
 
-Then push with: `git push origin main`
+Or set up a single command that pushes to both:
+```bash
+# Add GitLab remote
+git remote add gitlab git@gitlab.com:matercomus/mateusz-kedzia.git
+
+# Configure origin to push to both (GitHub must be first)
+git remote set-url --add --push origin git@github.com:matercomus/matercomus.github.io.git
+git remote set-url --add --push origin git@gitlab.com:matercomus/mateusz-kedzia.git
+
+# Now a single push goes to both:
+git push origin main
+```
+
+**Option B: GitHub Actions to Push to GitLab**
+Create a GitHub Action that automatically pushes to GitLab after each push to GitHub. This requires a GitLab personal access token with `write_repository` scope.
 
 ### 3. Enable GitLab Pages
 
