@@ -1,0 +1,20 @@
+image: node:20
+
+pages:
+  stage: deploy
+  script:
+    - npm ci
+    - npm run build
+    # GitLab Pages serves from 'public' directory, but Astro outputs to 'dist'
+    # So we need to copy dist to public
+    - cp -r dist/* public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 hour
+  only:
+    - main
+  environment:
+    name: production
+    url: https://$CI_PROJECT_NAMESPACE.gitlab.io/$CI_PROJECT_NAME
+
