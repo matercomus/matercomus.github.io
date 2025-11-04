@@ -18,7 +18,15 @@ export function Header({ currentPath }: HeaderProps) {
 	};
 
 	return (
-		<header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+		<header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 print:hidden" style={{ display: 'block' }}>
+			<style>{`
+				@media print {
+					header, header *, nav, nav * {
+						display: none !important;
+						visibility: hidden !important;
+					}
+				}
+			`}</style>
 			<div className="container flex h-16 items-center justify-between">
 				<Button asChild variant="link" size="lg" className="font-bold text-lg px-4 mr-4">
 					<a href="/">Mateusz Kędzia</a>
