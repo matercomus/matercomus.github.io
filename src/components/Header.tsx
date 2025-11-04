@@ -31,8 +31,9 @@ export function Header({ currentPath }: HeaderProps) {
 							variant={isActive(link.href) ? "default" : "ghost"}
 							size="sm"
 							asChild
+							className={isActive(link.href) ? "text-primary-foreground" : ""}
 						>
-							<a href={link.href}>{link.label}</a>
+							<a href={link.href} className={isActive(link.href) ? "text-primary-foreground" : ""}>{link.label}</a>
 						</Button>
 					))}
 				</nav>

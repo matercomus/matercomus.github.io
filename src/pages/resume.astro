@@ -17,6 +17,8 @@ try {
 	const bodyMatch = cvEnContent.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
 	if (bodyMatch) {
 		cvEnContent = bodyMatch[1];
+		// Remove max-w-4xl constraint to allow full A4 width
+		cvEnContent = cvEnContent.replace(/max-w-4xl/g, '');
 	}
 } catch (e) {
 	console.error('Error reading English CV:', e);
@@ -28,6 +30,8 @@ try {
 	const bodyMatch = cvZhContent.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
 	if (bodyMatch) {
 		cvZhContent = bodyMatch[1];
+		// Remove max-w-4xl constraint to allow full A4 width
+		cvZhContent = cvZhContent.replace(/max-w-4xl/g, '');
 	}
 } catch (e) {
 	console.error('Error reading Chinese CV:', e);
@@ -43,20 +47,20 @@ try {
 					<div class="flex gap-2" id="language-switcher">
 						<button 
 							data-lang="en"
-							class="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground shadow hover:bg-primary/90"
+							class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
 						>
 							English
 						</button>
 						<button 
 							data-lang="zh"
-							class="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-secondary text-foreground shadow-sm hover:bg-secondary/80"
+							class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-secondary text-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2"
 						>
 							中文
 						</button>
 					</div>
 					<button 
 						id="print-button"
-						class="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-outline border border-input bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground inline-flex items-center gap-2"
+						class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border border-input bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -163,9 +167,9 @@ try {
 			buttons?.forEach(btn => {
 				const btnLang = btn.getAttribute('data-lang');
 				if (btnLang === lang) {
-					btn.className = 'px-4 py-2 rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground shadow hover:bg-primary/90';
+					btn.className = 'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2';
 				} else {
-					btn.className = 'px-4 py-2 rounded-md text-sm font-medium transition-colors bg-secondary text-foreground shadow-sm hover:bg-secondary/80';
+					btn.className = 'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-secondary text-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2';
 				}
 			});
 		}
