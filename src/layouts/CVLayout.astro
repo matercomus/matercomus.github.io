@@ -17,7 +17,7 @@ const currentPath = Astro.url.pathname;
 		<BaseHead title={title} description="Resume" />
 		<!-- Font Awesome CDN for icons -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-		<link rel="stylesheet" crossorigin href="/cv/assets/style-D2WWScph.css"/>
+		<link rel="stylesheet" crossorigin href={`${import.meta.env.BASE_URL}cv/assets/style-D2WWScph.css`}/>
 		<style>
 			main {
 				width: 100%;
