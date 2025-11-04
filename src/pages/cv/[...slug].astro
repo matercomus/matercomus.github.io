@@ -22,7 +22,7 @@ const otherCv = allCvs.find(c => c.id !== cv.id);
 <CVLayout title={cv.data.title}>
 	<section class="py-8 sm:py-16 relative">
 		<!-- Floating Action Buttons -->
-		<div class="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3 no-print" id="floating-buttons">
+		<div class="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3 no-print print:hidden" id="floating-buttons" style="display: flex;">
 			{otherCv && (
 				<a 
 					href={`/cv/${otherCv.id}/`}
@@ -51,6 +51,22 @@ const otherCv = allCvs.find(c => c.id !== cv.id);
 		</div>
 	</section>
 
+	<style>
+		@media print {
+			#floating-buttons,
+			#floating-buttons *,
+			#print-button,
+			#language-switcher {
+				display: none !important;
+				visibility: hidden !important;
+				opacity: 0 !important;
+				height: 0 !important;
+				width: 0 !important;
+				position: absolute !important;
+				left: -9999px !important;
+			}
+		}
+	</style>
 	<script>
 		const printButton = document.getElementById('print-button');
 

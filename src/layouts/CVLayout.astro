@@ -50,16 +50,23 @@ const currentPath = Astro.url.pathname;
 				[role="navigation"],
 				.no-print,
 				.no-print *,
-				/* Hide floating buttons */
+				/* Hide floating buttons - very specific selectors */
 				#print-button,
 				#language-switcher,
 				#floating-buttons,
+				div#floating-buttons,
+				div[id="floating-buttons"],
+				.fixed[id="floating-buttons"],
 				button[data-lang],
 				button#print-button,
+				button[id="print-button"],
 				.fixed,
 				.fixed *,
+				[class*="fixed"],
+				[class*="fixed"] *,
 				/* Hide any buttons in print */
-				button {
+				button,
+				a[href*="/cv/"] {
 					display: none !important;
 					visibility: hidden !important;
 					opacity: 0 !important;
@@ -67,6 +74,9 @@ const currentPath = Astro.url.pathname;
 					width: 0 !important;
 					margin: 0 !important;
 					padding: 0 !important;
+					position: absolute !important;
+					left: -9999px !important;
+					top: -9999px !important;
 				}
 				
 				@page {
