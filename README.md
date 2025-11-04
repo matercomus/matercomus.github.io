@@ -1,62 +1,79 @@
-# Astro Starter Kit: Blog
+# Personal Website - Mateusz Kędzia
 
-```sh
-npm create astro@latest -- --template blog
+A modern, minimal personal website built with [Astro](https://astro.build), featuring a blog, resume, and project showcase.
+
+## 🌐 Live Sites
+
+- **GitHub Pages**: [matercomus.github.io](https://matercomus.github.io/)
+- **GitLab Pages**: [matercomus.gitlab.io/matercomus](https://matercomus.gitlab.io/matercomus/)
+
+The site is automatically mirrored to GitLab for access in regions where GitHub is blocked.
+
+## ✨ Features
+
+- **About Page**: Personal introduction and interests
+- **Blog**: Markdown/MDX-based blog with content collections
+- **Resume/CV**: Multi-language CV (English & 中文) with print-to-PDF functionality
+- **Projects**: Project showcase (coming soon)
+- **Responsive Design**: Mobile-first, optimized for all devices
+- **SEO Optimized**: Sitemap, RSS feed, OpenGraph metadata
+- **Performance**: 100/100 Lighthouse score
+
+## 🛠️ Tech Stack
+
+- **[Astro](https://astro.build)** - Static site generator
+- **[React](https://react.dev)** - Interactive components
+- **[Tailwind CSS](https://tailwindcss.com)** - Utility-first styling
+- **[Shadcn/ui](https://ui.shadcn.com)** - Component library
+- **MDX** - Enhanced Markdown for content
+
+## 📁 Project Structure
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
+├── public/          # Static assets (images, PDFs, fonts)
 ├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+│   ├── components/  # Reusable components (Header, Footer, CV components)
+│   ├── content/     # Content collections (blog posts, CVs)
+│   ├── layouts/     # Page layouts (BaseLayout, CVLayout, BlogPost)
+│   └── pages/       # Astro pages (routes)
+├── .github/         # GitHub Actions workflows
+└── .gitlab-ci.yml   # GitLab CI/CD configuration
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🚀 Development
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+# Install dependencies
+npm install
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+# Start dev server
+npm run dev
 
-Any static assets, like images, can be placed in the `public/` directory.
+# Build for production
+npm run build
 
-## 🧞 Commands
+# Preview production build
+npm run preview
+```
 
-All commands are run from the root of the project, from a terminal:
+## 🚢 Deployment
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+The site is automatically deployed via:
 
-## 👀 Want to learn more?
+- **GitHub Pages**: GitHub Actions workflow (`.github/workflows/pages.yml`)
+- **GitLab Pages**: GitLab CI/CD pipeline (`.gitlab-ci.yml`)
+- **Auto-Mirror**: GitHub Actions automatically mirrors to GitLab on every push
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 📝 Content Management
 
-## Credit
+- **Blog Posts**: Written in MDX, stored in `src/content/blog/`
+- **Resume/CV**: Written in MDX with reusable components, stored in `src/content/cv/`
+- All content is type-checked using Zod schemas
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+## 📄 License
+
+Personal project - All rights reserved.
+
+---
+
+**About Me**: AI Engineer & Research Scientist, currently completing a Master's in Artificial Intelligence at Vrije Universiteit Amsterdam, conducting research in Beijing through an exchange program with Beijing University of Technology.
