@@ -19,7 +19,7 @@ const sortedCvs = cvs.sort((a, b) => {
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 				{sortedCvs.map((cv) => (
 					<a 
-						href={`/cv/${cv.id}/`}
+						href={`${import.meta.env.BASE_URL}cv/${cv.id}/`}
 						class="block p-6 rounded-lg border border-border bg-card hover:bg-accent transition-colors text-center"
 					>
 						<h2 class="text-2xl font-bold">

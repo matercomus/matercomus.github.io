@@ -18,7 +18,7 @@ const posts = (await getCollection('blog')).sort(
 					<div class={index === 0 ? 'md:col-span-2' : ''}>
 						<BlogCard 
 							client:load
-							href={`/blog/${post.id}/`}
+							href={`${import.meta.env.BASE_URL}blog/${post.id}/`}
 							title={post.data.title}
 							pubDate={post.data.pubDate}
 							heroImage={post.data.heroImage?.src}
