@@ -4,6 +4,9 @@ pages:
   stage: deploy
   script:
     - npm ci
+    # Set environment variables for Astro base path configuration
+    - export CI_PROJECT_NAME="personal-site"
+    - export CI_PAGES_URL="https://matercomus.gitlab.io/personal-site"
     - npm run build
     # GitLab Pages serves from 'public' directory, but Astro outputs to 'dist'
     # So we need to copy dist to public
