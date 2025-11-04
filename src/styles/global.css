@@ -117,10 +117,14 @@ b {
 	font-weight: 700;
 }
 a:not([class*="inline-flex"]):not([class*="block"]) {
-	color: var(--accent);
+	color: rgb(var(--black));
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 2px;
 }
 a:not([class*="inline-flex"]):not([class*="block"]):hover {
-	color: var(--accent);
+	color: rgb(var(--black));
+	text-decoration-thickness: 3px;
 }
 p {
 	margin-bottom: 1em;

@@ -37,6 +37,16 @@ const currentPath = Astro.url.pathname;
 				padding: 1em;
 				color: rgb(var(--gray-dark));
 			}
+			.prose a {
+				color: rgb(var(--black));
+				text-decoration: underline;
+				text-decoration-thickness: 2px;
+				text-underline-offset: 2px;
+				font-weight: 500;
+			}
+			.prose a:hover {
+				text-decoration-thickness: 3px;
+			}
 			.title {
 				margin-bottom: 1em;
 				padding: 1em 0;
