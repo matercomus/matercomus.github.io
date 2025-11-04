@@ -43,15 +43,30 @@ const currentPath = Astro.url.pathname;
 			}
 			
 			@media print {
+				/* Hide navigation and footer */
 				header,
 				footer,
 				nav,
+				[role="navigation"],
+				.no-print,
+				.no-print *,
+				/* Hide floating buttons */
 				#print-button,
 				#language-switcher,
+				#floating-buttons,
 				button[data-lang],
 				button#print-button,
-				.fixed {
+				.fixed,
+				.fixed *,
+				/* Hide any buttons in print */
+				button {
 					display: none !important;
+					visibility: hidden !important;
+					opacity: 0 !important;
+					height: 0 !important;
+					width: 0 !important;
+					margin: 0 !important;
+					padding: 0 !important;
 				}
 				
 				@page {
@@ -150,11 +165,11 @@ const currentPath = Astro.url.pathname;
 		</style>
 	</head>
 	<body class="min-h-screen flex flex-col">
-		<Header client:load currentPath={currentPath} />
+		<Header client:load currentPath={currentPath} class="no-print" />
 		<main class="flex-1 cv-content">
 			<slot />
 		</main>
-		<Footer client:load />
+		<Footer client:load class="no-print" />
 	</body>
 </html>
 
