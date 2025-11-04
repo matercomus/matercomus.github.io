@@ -41,7 +41,7 @@ Then push with: `git push origin main`
 
 ### 4. Base Path Configuration
 
-The Astro config automatically detects GitLab CI environment variables and sets the correct base path. If your GitLab project name is different, update the `base` path in `astro.config.mjs`.
+The Astro config automatically detects GitLab CI environment variables (`CI_PROJECT_NAME` and `CI_PAGES_URL`) and sets the correct base path. No manual configuration needed - it works automatically when deployed via GitLab CI/CD.
 
 ## URLs
 
