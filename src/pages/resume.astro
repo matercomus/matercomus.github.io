@@ -1,12 +1,19 @@
 ---
-import { redirect } from 'astro:actions';
+// Client-side redirect for static sites
 ---
 
-<Fragment set:html={`
-	<script>
-		window.location.href = '/cv';
-	</script>
-	<meta http-equiv="refresh" content="0; url=/cv">
-	<p>Redirecting to <a href="/cv">/cv</a>...</p>
-`} />
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="refresh" content="0; url=/cv" />
+		<link rel="canonical" href="/cv" />
+		<script>
+			window.location.href = '/cv';
+		</script>
+	</head>
+	<body>
+		<p>Redirecting to <a href="/cv">/cv</a>...</p>
+	</body>
+</html>
 
