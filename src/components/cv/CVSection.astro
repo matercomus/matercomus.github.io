@@ -3,16 +3,19 @@ interface Props {
 	icon: string;
 	title: string;
 	variant?: 'default' | 'two-column';
+	hideTitle?: boolean;
 }
 
-const { icon, title, variant = 'default' } = Astro.props;
+const { icon, title, variant = 'default', hideTitle = false } = Astro.props;
 ---
 
 <section>
-	<div class={`flex items-center text-xl font-semibold mb-2 ${variant === 'two-column' ? 'md:justify-end' : ''}`}>
-		<i class={`${icon} mr-2`}></i>
-		{title}
-	</div>
+	{!hideTitle && (
+		<div class="flex items-center text-xl font-semibold mb-2">
+			<i class={`${icon} mr-2`}></i>
+			{title}
+		</div>
+	)}
 	{variant === 'two-column' ? (
 		<div class="flex flex-col md:flex-row md:space-x-8">
 			<slot />

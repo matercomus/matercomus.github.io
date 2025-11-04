@@ -23,39 +23,39 @@ if (cvZh) {
 ---
 
 <CVLayout title={`Resume - ${SITE_TITLE}`}>
-	<section class="py-8 sm:py-16">
+	<section class="py-8 sm:py-16 relative">
 		<div class="container px-4 sm:px-6 space-y-6 mb-6">
-			<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-				<h1 class="scroll-m-20 text-3xl sm:text-4xl font-extrabold tracking-tight">Resume</h1>
-				<div class="flex flex-wrap items-center gap-2">
-					<div class="flex gap-2" id="language-switcher">
-						<button 
-							data-lang="en"
-							class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
-						>
-							English
-						</button>
-						<button 
-							data-lang="zh"
-							class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-secondary text-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2"
-						>
-							中文
-						</button>
-					</div>
-					<button 
-						id="print-button"
-						class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border border-input bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
-					>
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-							<polyline points="7 10 12 15 17 10"></polyline>
-							<line x1="12" y1="15" x2="12" y2="3"></line>
-						</svg>
-						<span class="hidden sm:inline">Print / Save PDF</span>
-						<span class="sm:hidden">PDF</span>
-					</button>
-				</div>
+			<h1 class="scroll-m-20 text-3xl sm:text-4xl font-extrabold tracking-tight">Resume</h1>
+		</div>
+		
+		<!-- Floating Action Buttons -->
+		<div class="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3 print:hidden">
+			<div class="flex flex-col gap-2" id="language-switcher">
+				<button 
+					data-lang="en"
+					class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
+				>
+					English
+				</button>
+				<button 
+					data-lang="zh"
+					class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-secondary text-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2"
+				>
+					中文
+				</button>
 			</div>
+			<button 
+				id="print-button"
+				class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border border-input bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+					<polyline points="7 10 12 15 17 10"></polyline>
+					<line x1="12" y1="15" x2="12" y2="3"></line>
+				</svg>
+				<span class="hidden sm:inline">Print</span>
+				<span class="sm:hidden">PDF</span>
+			</button>
 		</div>
 		
 		<!-- CV Content Container -->
