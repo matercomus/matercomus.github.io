@@ -1,44 +1,28 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import CVLayout from '../layouts/CVLayout.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import fs from 'fs';
-import path from 'path';
 
-// Read CV HTML files
-const cvEnPath = path.join(process.cwd(), 'public', 'cv', 'index.html');
-const cvZhPath = path.join(process.cwd(), 'public', 'cv', 'index.zh.html');
+// Load CV content
+const cvEntries = await getCollection('cv');
+const cvEn = cvEntries.find(entry => entry.data.language === 'en');
+const cvZh = cvEntries.find(entry => entry.data.language === 'zh');
 
-let cvEnContent = '';
-let cvZhContent = '';
+let ContentEn = null;
+let ContentZh = null;
 
-try {
-	cvEnContent = fs.readFileSync(cvEnPath, 'utf-8');
-	// Extract body content (everything between <body> and </body>)
-	const bodyMatch = cvEnContent.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-	if (bodyMatch) {
-		cvEnContent = bodyMatch[1];
-		// Remove max-w-4xl constraint to allow full A4 width
-		cvEnContent = cvEnContent.replace(/max-w-4xl/g, '');
-	}
-} catch (e) {
-	console.error('Error reading English CV:', e);
+if (cvEn) {
+	const { Content } = await render(cvEn);
+	ContentEn = Content;
 }
 
-try {
-	cvZhContent = fs.readFileSync(cvZhPath, 'utf-8');
-	// Extract body content
-	const bodyMatch = cvZhContent.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-	if (bodyMatch) {
-		cvZhContent = bodyMatch[1];
-		// Remove max-w-4xl constraint to allow full A4 width
-		cvZhContent = cvZhContent.replace(/max-w-4xl/g, '');
-	}
-} catch (e) {
-	console.error('Error reading Chinese CV:', e);
+if (cvZh) {
+	const { Content } = await render(cvZh);
+	ContentZh = Content;
 }
 ---
 
-<BaseLayout title={`Resume - ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+<CVLayout title={`Resume - ${SITE_TITLE}`}>
 	<section class="py-8 sm:py-16">
 		<div class="container px-4 sm:px-6 space-y-6 mb-6">
 			<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -77,60 +61,20 @@ try {
 		<!-- CV Content Container -->
 		<div class="w-full bg-white">
 			<!-- English CV -->
-			<div id="cv-en" class="cv-content">
-				<div class="mx-auto py-10 px-6" set:html={cvEnContent}></div>
-			</div>
+			{ContentEn && (
+				<div id="cv-en" class="cv-content">
+					<ContentEn />
+				</div>
+			)}
 			
 			<!-- Chinese CV -->
-			<div id="cv-zh" class="cv-content hidden">
-				<div class="mx-auto py-10 px-6" set:html={cvZhContent}></div>
-			</div>
+			{ContentZh && (
+				<div id="cv-zh" class="cv-content hidden">
+					<ContentZh />
+				</div>
+			)}
 		</div>
 	</section>
-
-	<!-- Include Font Awesome and CV styles -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-	<link rel="stylesheet" crossorigin href="/cv/assets/style-D2WWScph.css"/>
-	
-	<style>
-		/* Fix button styling - ensure buttons don't look like links */
-		#language-switcher button,
-		#print-button {
-			text-decoration: none !important;
-			cursor: pointer;
-			appearance: none;
-			-webkit-appearance: none;
-		}
-		
-		/* A4 width: 210mm = 8.27in = ~794px at 96dpi, but we'll use a more readable width */
-		.cv-content {
-			font-family: system-ui, -apple-system, sans-serif;
-			max-width: 794px; /* A4 width in pixels at 96dpi */
-			margin: 0 auto;
-		}
-		
-		.cv-content > div {
-			max-width: 100%;
-		}
-		
-		.cv-content img {
-			max-width: 100%;
-			height: auto;
-		}
-		
-		@media print {
-			.cv-content.hidden {
-				display: none !important;
-			}
-		}
-		
-		@media (max-width: 820px) {
-			.cv-content {
-				max-width: 100%;
-				padding: 0 1rem;
-			}
-		}
-	</style>
 
 	<script>
 		const switcher = document.getElementById('language-switcher');
@@ -142,14 +86,8 @@ try {
 		let currentLang = 'en';
 
 		function printCV() {
-			// Open the CV in a new window for printing
-			const cvUrl = currentLang === 'zh' ? '/cv/index.zh.html' : '/cv/index.html';
-			const printWindow = window.open(cvUrl, '_blank');
-			if (printWindow) {
-				printWindow.onload = () => {
-					printWindow.print();
-				};
-			}
+			// Trigger browser print dialog (same as Ctrl+P)
+			window.print();
 		}
 
 		function switchLanguage(lang) {
@@ -191,4 +129,4 @@ try {
 			});
 		}
 	</script>
-</BaseLayout>
+</CVLayout>

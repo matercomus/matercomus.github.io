@@ -1,0 +1,29 @@
+---
+interface Props {
+	name: string;
+	phone: string;
+	email: string;
+	imageSrc?: string;
+	imageAlt?: string;
+}
+
+const { name, phone, email, imageSrc = "/cv/img75.jpg", imageAlt = "Profile Photo" } = Astro.props;
+---
+
+<div class="flex flex-col md:flex-row md:items-center md:space-x-8">
+	<img src={imageSrc} alt={imageAlt} class="w-40 h-48 object-cover rounded shadow-md mb-6 md:mb-0" />
+	<div class="flex-1">
+		<h1 class="text-4xl font-bold mb-2">{name}</h1>
+		<div class="flex flex-col md:flex-row md:space-x-8 text-gray-600 text-lg">
+			<div class="flex items-center mb-1 md:mb-0">
+				<i class="fa-solid fa-phone mr-2"></i>
+				{phone}
+			</div>
+			<div class="flex items-center">
+				<i class="fa-solid fa-envelope mr-2"></i>
+				{email}
+			</div>
+		</div>
+	</div>
+</div>
+

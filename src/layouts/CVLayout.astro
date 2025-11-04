@@ -1,0 +1,151 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import { Footer } from '../components/Footer';
+import { Header } from '../components/Header';
+
+type Props = {
+	title: string;
+};
+
+const { title } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description="Resume" />
+		<!-- Font Awesome CDN for icons -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+		<link rel="stylesheet" crossorigin href="/cv/assets/style-D2WWScph.css"/>
+		<style>
+			main {
+				width: 100%;
+				max-width: 794px; /* A4 width at 96dpi */
+				margin: 0 auto;
+				padding: 2em 1em;
+			}
+			
+			.cv-content {
+				font-family: system-ui, -apple-system, sans-serif;
+				background: white;
+			}
+			
+			.cv-content img {
+				max-width: 100%;
+				height: auto;
+			}
+			
+			@media print {
+				header,
+				footer,
+				nav,
+				#print-button,
+				#language-switcher {
+					display: none !important;
+				}
+				
+				@page {
+					size: A4;
+					margin: 1.5cm;
+				}
+				
+				body {
+					margin: 0;
+					padding: 0;
+					font-size: 11pt;
+					line-height: 1.4;
+					background: white;
+				}
+				
+				main {
+					max-width: 100%;
+					margin: 0;
+					padding: 0;
+				}
+				
+				.cv-content {
+					margin: 0;
+					padding: 0;
+				}
+				
+				.cv-content .py-10 {
+					padding-top: 0;
+					padding-bottom: 0;
+				}
+				
+				.cv-content .px-6 {
+					padding-left: 0;
+					padding-right: 0;
+				}
+				
+				.cv-content .space-y-8 > * + * {
+					margin-top: 1.2em;
+				}
+				
+				.cv-content .space-y-4 > * + * {
+					margin-top: 0.8em;
+				}
+				
+				.cv-content .space-y-2 > * + * {
+					margin-top: 0.4em;
+				}
+				
+				.cv-content .mt-10 {
+					margin-top: 1.5em;
+				}
+				
+				.cv-content .mb-4 {
+					margin-bottom: 0.8em;
+				}
+				
+				.cv-content .mb-2 {
+					margin-bottom: 0.4em;
+				}
+				
+				.cv-content .mb-6 {
+					margin-bottom: 1em;
+				}
+				
+				.cv-content img {
+					max-width: 120px;
+					height: auto;
+				}
+				
+				.cv-content .text-4xl {
+					font-size: 1.8em;
+				}
+				
+				.cv-content .text-xl {
+					font-size: 1.1em;
+				}
+				
+				.cv-content .text-lg {
+					font-size: 1em;
+				}
+				
+				.cv-content a {
+					color: inherit;
+					text-decoration: none;
+				}
+				
+				/* Prevent page breaks inside sections */
+				section {
+					page-break-inside: avoid;
+				}
+				
+				.cv-content .ml-6 {
+					margin-left: 1em;
+				}
+			}
+		</style>
+	</head>
+	<body class="min-h-screen flex flex-col">
+		<Header client:load currentPath={currentPath} />
+		<main class="flex-1 cv-content">
+			<slot />
+		</main>
+		<Footer client:load />
+	</body>
+</html>
+
