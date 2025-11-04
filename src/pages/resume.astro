@@ -1,6 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import fs from 'fs';
+import path from 'path';
+
+// Read CV HTML files
+const cvEnPath = path.join(process.cwd(), 'public', 'cv', 'index.html');
+const cvZhPath = path.join(process.cwd(), 'public', 'cv', 'index.zh.html');
+
+let cvEnContent = '';
+let cvZhContent = '';
+
+try {
+	cvEnContent = fs.readFileSync(cvEnPath, 'utf-8');
+	// Extract body content (everything between <body> and </body>)
+	const bodyMatch = cvEnContent.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+	if (bodyMatch) {
+		cvEnContent = bodyMatch[1];
+	}
+} catch (e) {
+	console.error('Error reading English CV:', e);
+}
+
+try {
+	cvZhContent = fs.readFileSync(cvZhPath, 'utf-8');
+	// Extract body content
+	const bodyMatch = cvZhContent.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+	if (bodyMatch) {
+		cvZhContent = bodyMatch[1];
+	}
+} catch (e) {
+	console.error('Error reading Chinese CV:', e);
+}
 ---
 
 <BaseLayout title={`Resume - ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
@@ -38,22 +69,47 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				</div>
 			</div>
 		</div>
-		<div class="w-full">
-			<iframe 
-				id="resume-frame"
-				src="/cv/index.html"
-				class="w-full border-0"
-				style="height: calc(100vh - 200px); min-height: 800px;"
-				title="Resume"
-				loading="lazy"
-			></iframe>
+		
+		<!-- CV Content Container -->
+		<div class="w-full bg-white">
+			<div class="container mx-auto">
+				<!-- English CV -->
+				<div id="cv-en" class="cv-content">
+					<div class="max-w-4xl mx-auto py-10 px-6" set:html={cvEnContent}></div>
+				</div>
+				
+				<!-- Chinese CV -->
+				<div id="cv-zh" class="cv-content hidden">
+					<div class="max-w-4xl mx-auto py-10 px-6" set:html={cvZhContent}></div>
+				</div>
+			</div>
 		</div>
 	</section>
 
+	<!-- Include Font Awesome and CV styles -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+	<link rel="stylesheet" crossorigin href="/cv/assets/style-D2WWScph.css"/>
+	
+	<style>
+		.cv-content {
+			font-family: system-ui, -apple-system, sans-serif;
+		}
+		.cv-content img {
+			max-width: 100%;
+			height: auto;
+		}
+		@media print {
+			.cv-content.hidden {
+				display: none !important;
+			}
+		}
+	</style>
+
 	<script>
 		const switcher = document.getElementById('language-switcher');
-		const frame = document.getElementById('resume-frame');
 		const printButton = document.getElementById('print-button');
+		const cvEn = document.getElementById('cv-en');
+		const cvZh = document.getElementById('cv-zh');
 		const buttons = switcher?.querySelectorAll('button');
 
 		let currentLang = 'en';
@@ -69,35 +125,43 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 			}
 		}
 
+		function switchLanguage(lang) {
+			currentLang = lang;
+			
+			if (lang === 'zh') {
+				cvEn?.classList.add('hidden');
+				cvZh?.classList.remove('hidden');
+			} else {
+				cvEn?.classList.remove('hidden');
+				cvZh?.classList.add('hidden');
+			}
+
+			// Update button styles
+			buttons?.forEach(btn => {
+				const btnLang = btn.getAttribute('data-lang');
+				if (btnLang === lang) {
+					btn.className = 'px-4 py-2 rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground shadow hover:bg-primary/90';
+				} else {
+					btn.className = 'px-4 py-2 rounded-md text-sm font-medium transition-colors bg-secondary text-foreground shadow-sm hover:bg-secondary/80';
+				}
+			});
+		}
+
 		// Attach print button event listener
 		if (printButton) {
 			printButton.addEventListener('click', printCV);
 		}
 
-		if (switcher && frame && buttons) {
+		// Attach language switcher event listeners
+		if (switcher && buttons) {
 			buttons.forEach(button => {
 				button.addEventListener('click', () => {
 					const lang = button.getAttribute('data-lang');
-					currentLang = lang || 'en';
-					
-					// Update iframe source
-					if (lang === 'zh') {
-						frame.src = '/cv/index.zh.html';
-					} else {
-						frame.src = '/cv/index.html';
+					if (lang) {
+						switchLanguage(lang);
 					}
-
-					// Update button styles
-					buttons.forEach(btn => {
-						if (btn === button) {
-							btn.className = 'px-4 py-2 rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground shadow hover:bg-primary/90';
-						} else {
-							btn.className = 'px-4 py-2 rounded-md text-sm font-medium transition-colors bg-secondary text-foreground shadow-sm hover:bg-secondary/80';
-						}
-					});
 				});
 			});
 		}
 	</script>
 </BaseLayout>
-
