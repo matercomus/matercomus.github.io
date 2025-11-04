@@ -72,16 +72,14 @@ try {
 		
 		<!-- CV Content Container -->
 		<div class="w-full bg-white">
-			<div class="container mx-auto">
-				<!-- English CV -->
-				<div id="cv-en" class="cv-content">
-					<div class="max-w-4xl mx-auto py-10 px-6" set:html={cvEnContent}></div>
-				</div>
-				
-				<!-- Chinese CV -->
-				<div id="cv-zh" class="cv-content hidden">
-					<div class="max-w-4xl mx-auto py-10 px-6" set:html={cvZhContent}></div>
-				</div>
+			<!-- English CV -->
+			<div id="cv-en" class="cv-content">
+				<div class="mx-auto py-10 px-6" set:html={cvEnContent}></div>
+			</div>
+			
+			<!-- Chinese CV -->
+			<div id="cv-zh" class="cv-content hidden">
+				<div class="mx-auto py-10 px-6" set:html={cvZhContent}></div>
 			</div>
 		</div>
 	</section>
@@ -91,16 +89,41 @@ try {
 	<link rel="stylesheet" crossorigin href="/cv/assets/style-D2WWScph.css"/>
 	
 	<style>
+		/* Fix button styling - ensure buttons don't look like links */
+		#language-switcher button,
+		#print-button {
+			text-decoration: none !important;
+			cursor: pointer;
+			appearance: none;
+			-webkit-appearance: none;
+		}
+		
+		/* A4 width: 210mm = 8.27in = ~794px at 96dpi, but we'll use a more readable width */
 		.cv-content {
 			font-family: system-ui, -apple-system, sans-serif;
+			max-width: 794px; /* A4 width in pixels at 96dpi */
+			margin: 0 auto;
 		}
+		
+		.cv-content > div {
+			max-width: 100%;
+		}
+		
 		.cv-content img {
 			max-width: 100%;
 			height: auto;
 		}
+		
 		@media print {
 			.cv-content.hidden {
 				display: none !important;
+			}
+		}
+		
+		@media (max-width: 820px) {
+			.cv-content {
+				max-width: 100%;
+				padding: 0 1rem;
 			}
 		}
 	</style>
