@@ -38,8 +38,26 @@ git remote set-url --add --push origin git@gitlab.com:matercomus/mateusz-kedzia.
 git push origin main
 ```
 
-**Option B: GitHub Actions to Push to GitLab**
-Create a GitHub Action that automatically pushes to GitLab after each push to GitHub. This requires a GitLab personal access token with `write_repository` scope.
+**Option B: GitHub Actions Auto-Mirror (Automatic)**
+A GitHub Action (`.github/workflows/mirror-to-gitlab.yml`) is included that automatically pushes to GitLab whenever you push to GitHub.
+
+To enable it:
+1. Create a GitLab Personal Access Token:
+   - Go to GitLab → Settings → Access Tokens (or User Settings → Access Tokens)
+   - Name: `github-mirror`
+   - Scopes: `write_repository`
+   - Create token and copy it
+
+2. Add the token to GitHub:
+   - Go to your GitHub repo → Settings → Secrets and variables → Actions
+   - New repository secret: Name `GITLAB_TOKEN`, Value: (paste your GitLab token)
+   - Save
+
+3. Update the workflow file:
+   - Edit `.github/workflows/mirror-to-gitlab.yml`
+   - Replace `matercomus/mateusz-kedzia` with your actual GitLab project path (e.g., `username/project-name`)
+
+Now every push to GitHub will automatically mirror to GitLab!
 
 ### 3. Enable GitLab Pages
 
