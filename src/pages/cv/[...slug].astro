@@ -1,0 +1,68 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import CVLayout from '../../layouts/CVLayout.astro';
+
+export async function getStaticPaths() {
+	const cvs = await getCollection('cv');
+	return cvs.map((cv) => ({
+		params: { slug: cv.id },
+		props: cv,
+	}));
+}
+type Props = CollectionEntry<'cv'>;
+
+const cv = Astro.props;
+const { Content } = await render(cv);
+
+// Get all CVs for language switching
+const allCvs = await getCollection('cv');
+const otherCv = allCvs.find(c => c.id !== cv.id);
+---
+
+<CVLayout title={cv.data.title}>
+	<section class="py-8 sm:py-16 relative">
+		<!-- Floating Action Buttons -->
+		<div class="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3 print:hidden">
+			{otherCv && (
+				<a 
+					href={`/cv/${otherCv.id}/`}
+					class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-secondary text-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2"
+				>
+					{otherCv.data.language === 'en' ? 'English' : '中文'}
+				</a>
+			)}
+			<button 
+				id="print-button"
+				class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border border-input bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+					<polyline points="7 10 12 15 17 10"></polyline>
+					<line x1="12" y1="15" x2="12" y2="3"></line>
+				</svg>
+				<span class="hidden sm:inline">Print</span>
+				<span class="sm:hidden">PDF</span>
+			</button>
+		</div>
+		
+		<!-- CV Content Container -->
+		<div class="w-full bg-white">
+			<Content />
+		</div>
+	</section>
+
+	<script>
+		const printButton = document.getElementById('print-button');
+
+		function printCV() {
+			// Trigger browser print dialog (same as Ctrl+P)
+			window.print();
+		}
+
+		// Attach print button event listener
+		if (printButton) {
+			printButton.addEventListener('click', printCV);
+		}
+	</script>
+</CVLayout>
+

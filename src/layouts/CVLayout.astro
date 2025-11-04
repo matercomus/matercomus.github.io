@@ -36,6 +36,12 @@ const currentPath = Astro.url.pathname;
 				height: auto;
 			}
 			
+			/* Ensure CV content container has proper styling */
+			section > div.bg-white {
+				max-width: 794px;
+				margin: 0 auto;
+			}
+			
 			@media print {
 				header,
 				footer,
