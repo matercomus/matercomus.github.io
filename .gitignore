@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # Tailwind config (optional - keeping for now)
 # tailwind.config.mjs
+
+# CV backup (sensitive information)
+.cv-backup/

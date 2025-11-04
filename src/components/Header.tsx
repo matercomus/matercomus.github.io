@@ -5,11 +5,10 @@ interface HeaderProps {
 }
 
 const navLinks = [
-	{ href: "/", label: "Home" },
+	{ href: "/", label: "About" },
+	{ href: "/projects", label: "Projects" },
 	{ href: "/blog", label: "Blog" },
-	{ href: "/cv/index.html", label: "CV" },
-	{ href: "/cv/index.zh.html", label: "中文简历" },
-	{ href: "/about", label: "About" },
+	{ href: "/resume", label: "Resume" },
 ];
 
 export function Header({ currentPath }: HeaderProps) {

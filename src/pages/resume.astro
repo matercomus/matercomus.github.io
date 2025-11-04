@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<BaseLayout title={`Resume - ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+	<section class="py-8 sm:py-16">
+		<div class="container px-4 sm:px-6 space-y-6 mb-6">
+			<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+				<h1 class="scroll-m-20 text-3xl sm:text-4xl font-extrabold tracking-tight">Resume</h1>
+				<div class="flex flex-wrap items-center gap-2">
+					<div class="flex gap-2" id="language-switcher">
+						<button 
+							data-lang="en"
+							class="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground shadow hover:bg-primary/90"
+						>
+							English
+						</button>
+						<button 
+							data-lang="zh"
+							class="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-secondary text-foreground shadow-sm hover:bg-secondary/80"
+						>
+							中文
+						</button>
+					</div>
+					<button 
+						id="print-button"
+						class="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-outline border border-input bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground inline-flex items-center gap-2"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+							<polyline points="7 10 12 15 17 10"></polyline>
+							<line x1="12" y1="15" x2="12" y2="3"></line>
+						</svg>
+						<span class="hidden sm:inline">Print / Save PDF</span>
+						<span class="sm:hidden">PDF</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="w-full">
+			<iframe 
+				id="resume-frame"
+				src="/cv/index.html"
+				class="w-full border-0"
+				style="height: calc(100vh - 200px); min-height: 800px;"
+				title="Resume"
+				loading="lazy"
+			></iframe>
+		</div>
+	</section>
+
+	<script>
+		const switcher = document.getElementById('language-switcher');
+		const frame = document.getElementById('resume-frame');
+		const printButton = document.getElementById('print-button');
+		const buttons = switcher?.querySelectorAll('button');
+
+		let currentLang = 'en';
+
+		function printCV() {
+			// Open the CV in a new window for printing
+			const cvUrl = currentLang === 'zh' ? '/cv/index.zh.html' : '/cv/index.html';
+			const printWindow = window.open(cvUrl, '_blank');
+			if (printWindow) {
+				printWindow.onload = () => {
+					printWindow.print();
+				};
+			}
+		}
+
+		// Attach print button event listener
+		if (printButton) {
+			printButton.addEventListener('click', printCV);
+		}
+
+		if (switcher && frame && buttons) {
+			buttons.forEach(button => {
+				button.addEventListener('click', () => {
+					const lang = button.getAttribute('data-lang');
+					currentLang = lang || 'en';
+					
+					// Update iframe source
+					if (lang === 'zh') {
+						frame.src = '/cv/index.zh.html';
+					} else {
+						frame.src = '/cv/index.html';
+					}
+
+					// Update button styles
+					buttons.forEach(btn => {
+						if (btn === button) {
+							btn.className = 'px-4 py-2 rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground shadow hover:bg-primary/90';
+						} else {
+							btn.className = 'px-4 py-2 rounded-md text-sm font-medium transition-colors bg-secondary text-foreground shadow-sm hover:bg-secondary/80';
+						}
+					});
+				});
+			});
+		}
+	</script>
+</BaseLayout>
+

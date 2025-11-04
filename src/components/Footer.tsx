@@ -4,13 +4,15 @@ export function Footer() {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<footer className="mt-auto">
-			<div className="container py-8">
-				<Separator className="mb-4" />
-				<div className="flex flex-col items-center">
-				<p className="text-sm text-muted-foreground">
-					© {currentYear} Mateusz Kędzia
-				</p>
+		<footer className="mt-auto w-full">
+			<div className="w-full py-8 px-4">
+				<div className="container mx-auto">
+					<Separator className="mb-4" />
+					<div className="flex justify-center">
+						<p className="text-sm text-muted-foreground text-center">
+							© {currentYear} Mateusz Kędzia
+						</p>
+					</div>
 				</div>
 			</div>
 		</footer>
