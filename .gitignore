@@ -31,12 +31,9 @@ pnpm-debug.log*
 
 # CV backup (sensitive information)
 .cv-backup/
-<<<<<<< Updated upstream
-=======
 
 # Blog backup (placeholder posts)
 .blog-backup/
 
 # Hidden posts (private content)
 .hidden-posts/
->>>>>>> Stashed changes
