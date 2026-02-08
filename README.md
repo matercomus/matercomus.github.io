@@ -76,4 +76,4 @@ Personal project - All rights reserved.
 
 ---
 
-**About Me**: AI Engineer & Research Scientist, currently completing a Master's in Artificial Intelligence at Vrije Universiteit Amsterdam, conducting research in Beijing through an exchange program with Beijing University of Technology.
+**About Me**: AI Engineer & Research Scientist with a Master's in Artificial Intelligence from Vrije Universiteit Amsterdam (2023-2026, grade 8/10). Experienced in developing autonomous agents, LLM-powered applications, and scalable AI systems. Specialized in RAG architectures using LangGraph and LangChain, multimodal AI solutions, and production-ready AI tools. Research experience includes IoT data processing, geospatial analysis, and commercial AI product development, with a proven track record in improving operational efficiency and delivering innovative solutions.
