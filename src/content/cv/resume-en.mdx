@@ -16,6 +16,12 @@ import CVTwoColumn from '../../components/cv/CVTwoColumn.astro';
 		name="Mateusz Kędzia"
 		phone="+86 13552466785 / +31 622131620"
 		email="mateusz.kedzia@gmail.com"
+		wechat="wxid_24qe3yowlpu622"
+		dob="1999.08.29"
+		gender="Male"
+		nationality="Polish (EU Citizen)"
+		maritalStatus="Unmarried"
+		visaStatus="Z-Visa Eligible"
 	/>
 	
 	<div class="mt-10 space-y-8">
@@ -24,7 +30,7 @@ import CVTwoColumn from '../../components/cv/CVTwoColumn.astro';
 		</CVSection>
 
 		<CVSection icon="fa-solid fa-user-check" title="Self-Assessment">
-			<div class="text-gray-700">An experienced AI engineer and machine learning specialist with expertise in developing autonomous agents, LLM-powered applications, and scalable AI systems. Proficient in building RAG architectures using LangGraph and LangChain, designing multimodal AI solutions, and deploying production-ready AI tools. During my academic and professional journey, I have led projects involving IoT data processing, geospatial analysis, and commercial AI product development. My work spans from research-oriented machine learning systems to enterprise-grade AI applications, with a proven track record of improving operational efficiency and delivering innovative solutions. Passionate about advancing AI technology and contributing to cutting-edge developments in autonomous systems and intelligent agents.</div>
+			<div class="text-gray-700">AI engineer with a Master's in Artificial Intelligence (VU Amsterdam, 8/10 GPA) and hands-on enterprise experience building RAG systems, LLM-powered tools, and autonomous agents using LangGraph/LangChain. Currently deploying production AI products in Beijing, with proven ability to design scalable ML pipelines, knowledge graphs, and multimodal solutions. Strong cross-cultural communicator fluent in English with working Chinese, seeking to contribute to cutting-edge AI development in China's tech ecosystem.</div>
 		</CVSection>
 
 		<CVSection icon="fa-solid fa-graduation-cap" title="Education & Languages" variant="two-column" hideTitle={true}>
@@ -68,6 +74,26 @@ import CVTwoColumn from '../../components/cv/CVTwoColumn.astro';
 					result="Establishing foundation for improved operational efficiency and commercial AI products."
 					reflection="Gaining valuable experience in enterprise AI deployment and product development."
 				/>
+				<CVProject 
+					title="Research Assistant — HEDGE-IoT: IoT Data Science Platform and ML Engineering (EU-Funded)"
+					date="2024.07-2025.10"
+					organization="Vrije Universiteit Amsterdam (with TNO & Arnhems Buiten)"
+					background="Part of the EU-funded HEDGE-IoT project deploying smart meters, V2G charging stations, residential batteries, heat pumps, and solar PVs across 15 buildings in Arnhem, Netherlands, coordinated through Building and Energy Management Systems (BEMS/EMS)."
+					task="As a research assistant, responsible for designing the IoT data science platform, implementing semantic data pipelines using SAREF ontologies, and building ML workflows for real-time energy optimization."
+					action="Built and deployed a Dockerized JupyterHub platform supporting 50+ users. Developed semantic adapters and data conversion pipelines into knowledge graphs using RDF/SAREF. Implemented edge-cloud IoT architecture enabling real-time anomaly detection and predictive energy scheduling. Integrated Knowledge Engine (KE) with explainable AI for cross-building energy flexibility operations."
+					result="Platform enabled real-time monitoring, semantic integration of distributed energy assets, and grid fault detection across 15 buildings. Successfully showcased at HEDGE-IoT conference, supporting 50+ researchers in flexibility services and predictive optimization."
+					reflection="Deepened expertise in semantic IoT architectures, knowledge graphs, edge-cloud computing, explainable AI for energy systems, and large-scale collaborative platform engineering."
+				/>
+				<CVProject 
+					title="Data Engineer — Dutch News Archive Web Crawler"
+					date="2024.02-2024.07"
+					organization="University of Amsterdam"
+					background="Large-scale research requires high-integrity news datasets."
+					task="Develop efficient web crawler for automated data extraction and structuring."
+					action="Implemented anti-blocking and relevance filtering algorithms, automated processing of over 1 million news articles."
+					result="Achieved 99% data integrity, providing reliable datasets for research."
+					reflection="Enhanced automation, data quality assurance, and large-scale data engineering capabilities."
+				/>
 			</div>
 		</CVSection>
 
@@ -82,26 +108,6 @@ import CVTwoColumn from '../../components/cv/CVTwoColumn.astro';
 					action="Designed and implemented cross-task distillation models with representation alignment techniques, conducting comprehensive benchmark evaluations."
 					result="Matched SOTA performance through efficient representation alignment. Achieved thesis grade of 8/10 with overall Master's average of 8/10."
 					reflection="Deepened expertise in knowledge distillation, trajectory prediction, and cross-task transfer learning."
-				/>
-				<CVProject 
-					title="HEDGE-IoT: IoT Data Science Platform and Machine Learning Engineering (EU-Funded)"
-					date="2024.07-2024.09"
-					organization="Vrije Universiteit Amsterdam (with TNO & Arnhems Buiten)"
-					background="Part of the EU-funded HEDGE-IoT project deploying smart meters, V2G charging stations, residential batteries, heat pumps, and solar PVs across 15 buildings in Arnhem, Netherlands, coordinated through Building and Energy Management Systems (BEMS/EMS)."
-					task="As a research assistant, responsible for designing the IoT data science platform, implementing semantic data pipelines using SAREF ontologies, and building ML workflows for real-time energy optimization."
-					action="Built and deployed a Dockerized JupyterHub platform supporting 50+ users. Developed semantic adapters and data conversion pipelines into knowledge graphs using RDF/SAREF. Implemented edge-cloud IoT architecture enabling real-time anomaly detection and predictive energy scheduling. Integrated Knowledge Engine (KE) with explainable AI for cross-building energy flexibility operations."
-					result="Platform enabled real-time monitoring, semantic integration of distributed energy assets, and grid fault detection across 15 buildings. Successfully showcased at HEDGE-IoT conference, supporting 50+ researchers in flexibility services and predictive optimization."
-					reflection="Deepened expertise in semantic IoT architectures, knowledge graphs, edge-cloud computing, explainable AI for energy systems, and large-scale collaborative platform engineering."
-				/>
-				<CVProject 
-					title="Dutch News Archive Web Crawler"
-					date="2024.02-2024.07"
-					organization="University of Amsterdam"
-					background="Large-scale research requires high-integrity news datasets."
-					task="Develop efficient web crawler for automated data extraction and structuring."
-					action="Implemented anti-blocking and relevance filtering algorithms, automated processing of over 1 million news articles."
-					result="Achieved 99% data integrity, providing reliable datasets for research."
-					reflection="Enhanced automation, data quality assurance, and large-scale data engineering capabilities."
 				/>
 				<CVProject 
 					title="Bachelor's Thesis: Explainable AI Processing of Heterogeneous IoT Data"
@@ -133,15 +139,8 @@ import CVTwoColumn from '../../components/cv/CVTwoColumn.astro';
 			<div class="text-gray-700">Served as Chairman of Communication Committee in Faculty of Science Student Council: chaired meetings, assigned tasks, coordinated communication.<br/>Led practical courses and guided 10+ students in machine learning and data projects.</div>
 		</CVSection>
 
-		<CVSection icon="fa-solid fa-book" title="Core Courses">
-			<div class="text-gray-700 space-y-1">
-				<CVListItem label="Deep Learning">Custom CNN, DNN implementation</CVListItem>
-				<CVListItem label="Natural Language Processing">Transformers, Hugging Face, Advanced NLP</CVListItem>
-				<CVListItem label="Data Mining Techniques">XGBoost ranking, Kaggle competitions</CVListItem>
-				<CVListItem label="Reinforcement Learning Projects">Data center optimization RL</CVListItem>
-				<CVListItem label="Conversational Robot">Dialogue agent based on OpenAI API, won first place in class competition (1/8 teams)</CVListItem>
-				<CVListItem label="Evolutionary Computing">Custom evolutionary algorithms for game AI</CVListItem>
-			</div>
+		<CVSection icon="fa-solid fa-book" title="Key Coursework">
+			<div class="text-gray-700">Deep Learning (Custom CNN/DNN) · Natural Language Processing (Transformers, Hugging Face) · Data Mining (XGBoost, Kaggle) · Reinforcement Learning (Data Center Optimization) · Conversational AI (1st place, OpenAI API agent) · Evolutionary Computing</div>
 		</CVSection>
 	</div>
 </div>

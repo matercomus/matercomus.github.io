@@ -5,20 +5,26 @@ interface Props {
 	email: string;
 	imageSrc?: string;
 	imageAlt?: string;
+	dob?: string;
+	gender?: string;
+	nationality?: string;
+	maritalStatus?: string;
+	wechat?: string;
+	visaStatus?: string;
 }
 
 // Use base URL for image path to work with GitLab Pages
 const baseUrl = import.meta.env.BASE_URL || '/';
 const defaultImageSrc = `${baseUrl}cv/img75.jpg`;
-const { name, phone, email, imageSrc = defaultImageSrc, imageAlt = "Profile Photo" } = Astro.props;
+const { name, phone, email, imageSrc = defaultImageSrc, imageAlt = "Profile Photo", dob, gender, nationality, maritalStatus, wechat, visaStatus } = Astro.props;
 ---
 
 <div class="flex flex-col md:flex-row md:items-center md:space-x-8">
 	<img src={imageSrc} alt={imageAlt} class="w-40 h-48 object-cover rounded shadow-md mb-6 md:mb-0" />
 	<div class="flex-1">
 		<h1 class="text-4xl font-bold mb-2">{name}</h1>
-		<div class="flex flex-col md:flex-row md:space-x-8 text-gray-600 text-lg">
-			<div class="flex items-center mb-1 md:mb-0">
+		<div class="flex flex-wrap gap-x-6 gap-y-1 text-gray-600 text-lg">
+			<div class="flex items-center">
 				<i class="fa-solid fa-phone mr-2"></i>
 				{phone}
 			</div>
@@ -26,7 +32,47 @@ const { name, phone, email, imageSrc = defaultImageSrc, imageAlt = "Profile Phot
 				<i class="fa-solid fa-envelope mr-2"></i>
 				{email}
 			</div>
+			{wechat && (
+				<div class="flex items-center">
+					<i class="fa-brands fa-weixin mr-2"></i>
+					{wechat}
+				</div>
+			)}
 		</div>
+		{(dob || gender || nationality || maritalStatus || visaStatus) && (
+			<div class="flex flex-wrap gap-x-6 gap-y-1 text-gray-500 text-base mt-2">
+				{dob && (
+					<div class="flex items-center">
+						<i class="fa-solid fa-cake-candles mr-2"></i>
+						{dob}
+					</div>
+				)}
+				{gender && (
+					<div class="flex items-center">
+						<i class="fa-solid fa-user mr-2"></i>
+						{gender}
+					</div>
+				)}
+				{nationality && (
+					<div class="flex items-center">
+						<i class="fa-solid fa-flag mr-2"></i>
+						{nationality}
+					</div>
+				)}
+				{maritalStatus && (
+					<div class="flex items-center">
+						<i class="fa-solid fa-heart mr-2"></i>
+						{maritalStatus}
+					</div>
+				)}
+				{visaStatus && (
+					<div class="flex items-center">
+						<i class="fa-solid fa-passport mr-2"></i>
+						{visaStatus}
+					</div>
+				)}
+			</div>
+		)}
 	</div>
 </div>
 
