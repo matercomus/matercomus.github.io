@@ -15,12 +15,12 @@ interface Props {
 
 // Use base URL for image path to work with GitLab Pages
 const baseUrl = import.meta.env.BASE_URL || '/';
-const defaultImageSrc = `${baseUrl}cv/img75.jpg`;
+const defaultImageSrc = `${baseUrl}cv/matt_photo_no_bg.png`;
 const { name, phone, email, imageSrc = defaultImageSrc, imageAlt = "Profile Photo", dob, gender, nationality, maritalStatus, wechat, visaStatus } = Astro.props;
 ---
 
 <div class="flex flex-col md:flex-row md:items-center md:space-x-8">
-	<img src={imageSrc} alt={imageAlt} class="w-40 h-48 object-cover rounded shadow-md mb-6 md:mb-0" />
+	<img src={imageSrc} alt={imageAlt} class="w-40 object-cover rounded shadow-md mb-6 md:mb-0" />
 	<div class="flex-1">
 		<h1 class="text-4xl font-bold mb-2">{name}</h1>
 		<div class="flex flex-wrap gap-x-6 gap-y-1 text-gray-600 text-lg">
