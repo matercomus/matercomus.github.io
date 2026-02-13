@@ -8,8 +8,8 @@ interface Props {
 const { date, institution, degree } = Astro.props;
 ---
 
-<div>
-	<span class="font-semibold">{date}</span> | {institution}<br/>
-	<span set:html={degree} />
+<div class="leading-snug">
+	<div><span class="font-semibold">{institution}</span> <span class="whitespace-nowrap">({date})</span></div>
+	<div set:html={degree} />
 </div>
 

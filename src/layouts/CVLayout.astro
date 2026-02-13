@@ -23,7 +23,7 @@ const currentPath = Astro.url.pathname;
 				width: 100%;
 				max-width: 794px; /* A4 width at 96dpi */
 				margin: 0 auto;
-				padding: 2em 1em;
+				padding: 0.5em 1em;
 			}
 			
 			.cv-content {
@@ -81,7 +81,7 @@ const currentPath = Astro.url.pathname;
 				
 				@page {
 					size: A4;
-					margin: 1.5cm;
+					margin: 1.0cm;
 				}
 				
 				body {
@@ -126,7 +126,7 @@ const currentPath = Astro.url.pathname;
 				}
 				
 				.cv-content .mt-10 {
-					margin-top: 1.5em;
+					margin-top: 0.8em;
 				}
 				
 				.cv-content .mb-4 {
@@ -175,11 +175,11 @@ const currentPath = Astro.url.pathname;
 		</style>
 	</head>
 	<body class="min-h-screen flex flex-col">
-		<Header client:load currentPath={currentPath} class="no-print" />
+		<Header client:load currentPath={currentPath} />
 		<main class="flex-1 cv-content">
 			<slot />
 		</main>
-		<Footer client:load class="no-print" />
+		<Footer client:load />
 	</body>
 </html>
 

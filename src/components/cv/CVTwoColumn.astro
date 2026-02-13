@@ -9,22 +9,22 @@ interface Props {
 const { leftTitle, leftIcon, rightTitle, rightIcon } = Astro.props;
 ---
 
-<div class="flex flex-col md:flex-row md:space-x-8">
-	<div class="flex-1">
+<div class="flex flex-col md:flex-row md:justify-between">
+	<div class="md:w-auto">
 		<div class="flex items-center text-xl font-semibold mb-2">
 			<i class={`${leftIcon} mr-2`}></i>
 			{leftTitle}
 		</div>
-		<div class="ml-6 space-y-2">
+		<div class="ml-6 space-y-1">
 			<slot name="left" />
 		</div>
 	</div>
-	<div class="flex-1 mt-8 md:mt-0">
+	<div class="md:w-auto mt-6 md:mt-0">
 		<div class="flex items-center text-xl font-semibold mb-2 md:justify-end">
 			<i class={`${rightIcon} mr-2`}></i>
 			{rightTitle}
 		</div>
-		<div class="ml-6 md:ml-0 md:text-right text-gray-700 space-y-1">
+		<div class="md:text-right text-gray-700 space-y-0.5">
 			<slot name="right" />
 		</div>
 	</div>
