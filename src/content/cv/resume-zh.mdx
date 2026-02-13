@@ -13,18 +13,24 @@ import CVTwoColumn from '../../components/cv/CVTwoColumn.astro';
 
 <div class="mx-auto py-10 px-6">
 	<CVHeader 
-		name="马特 (Mateusz Kędzia)"
+		name="Mateusz Kędzia / 马特"
 		phone="+86 13552466785 / +31 622131620"
 		email="mateusz.kedzia@gmail.com"
+		wechat="wxid_24qe3yowlpu622"
+		dob="1999.08.29"
+		gender="男"
+		nationality="波兰（欧盟公民）"
+		maritalStatus="未婚"
+		visaStatus="可办理Z签证"
 	/>
 	
 	<div class="mt-10 space-y-8">
 		<CVSection icon="fa-solid fa-bullseye" title="求职意向">
-			<div class="text-gray-700">职位类型：AI/ML工程师 & 研究科学家</div>
+			<div class="text-gray-700">期望地点：北京｜目标方向：AI 智能体开发 / LLM 应用开发 / AI 工程化与基础设施（训练/部署/推理/监控）｜目标岗位：AI/LLM 工程师、AI 智能体工程师、ML 工程师</div>
 		</CVSection>
 
 		<CVSection icon="fa-solid fa-user-check" title="自我评价">
-			<div class="text-gray-700">经验丰富的AI工程师和机器学习专家，专注于开发自主智能体、大语言模型应用和可扩展AI系统。精通使用LangGraph和LangChain构建RAG架构，设计多模态AI解决方案，部署生产级AI工具。在我的学术和职业生涯中，我主导了涉及物联网数据处理、地理空间分析和商业AI产品开发的项目。我的工作涵盖从研究导向的机器学习系统到企业级AI应用，在提高运营效率和交付创新解决方案方面拥有丰富经验。热衷于推动AI技术发展，致力于自主系统和智能代理的前沿研究。</div>
+			<div class="text-gray-700">AI工程师，人工智能硕士（阿姆斯特丹自由大学 VU Amsterdam，均分 8/10），具备企业落地经验：使用 LangGraph/LangChain 构建 RAG 系统、LLM 应用与自主智能体。现于北京推进生产级 AI 产品交付，擅长可扩展的 ML 流水线、知识图谱与多模态方案。英语流利、中文可工作沟通（HSK2），希望在中国科技生态中参与前沿 AI 研发与工程化。</div>
 		</CVSection>
 
 		<CVSection icon="fa-solid fa-graduation-cap" title="教育背景与语言能力" variant="two-column" hideTitle={true}>
@@ -56,6 +62,41 @@ import CVTwoColumn from '../../components/cv/CVTwoColumn.astro';
 			</CVTwoColumn>
 		</CVSection>
 
+		<CVSection icon="fa-solid fa-briefcase" title="工作经历">
+			<div class="space-y-4 text-gray-700">
+				<CVProject 
+					title="AI 工程师 & 产品开发"
+					date="2025.06-至今"
+					organization="Beijing Nievedor Intelligent Technology Co., Ltd."
+					background="在快速成长的公司推动 AI 创新，负责 AI 产品研发、技术内容制作与合作项目交付。"
+					task="开发内部 AI 工具与软件产品，打造最新 AI 技术展示与教程，并负责云端基础设施与自动化工作流。"
+					action="构建 RAG 系统与摘要引擎，完成多供应商 LLM 接入与编排（OpenAI/GPT-4、Anthropic/Claude、Google/Gemini），支持直连与通过 OpenRouter 进行模型路由。使用 n8n 设计并部署 AI 自动化流程以优化业务。独立开发可运行 Demo 与视频教程，覆盖 Sora2、NanoBanana、LibreChat、Cursor 等新技术，并在哔哩哔哩/小红书/微信等平台发布。主导与滴滴的合作：将 DiDi MCP 与高德 MCP 集成进定制 LibreChat，使更多用户可通过对话式 AI 便捷调用出行与地图能力。使用 Terraform（IaC）在 AWS 上管理与交付全部基础设施。"
+					result="交付多供应商 LLM 集成，实现成本可控的模型路由与自动化业务流程；技术展示内容覆盖中国主流平台；完成滴滴×高德 MCP 集成并达到可用交付标准；通过 Terraform/AWS 建立可复用、可扩展的云基础设施。"
+					reflection="积累了企业级 AI 工程化、多供应商 LLM 编排、MCP 生态集成、面向中国平台的技术内容输出，以及 IaC/云基础设施交付经验。"
+				/>
+				<CVProject 
+					title="研究助理 — HEDGE-IoT：物联网数据科学平台与机器学习工程（欧盟项目）"
+					date="2024.07-2025.10"
+					organization="阿姆斯特丹自由大学（与 TNO、Arnhems Buiten 合作）"
+					background="参与欧盟 HEDGE-IoT 项目：在荷兰阿纳姆（Arnhem）15 栋建筑部署智能电表、V2G 充电桩、户用电池、热泵与光伏，通过 BEMS/EMS 协调，实现建筑级与系统级的能源灵活性与优化。"
+					task="设计与部署 IoT 数据科学平台，基于 SAREF 本体实现语义数据管道，构建用于实时能源优化的 ML 工作流。"
+					action="搭建并部署 Docker 化 JupyterHub（50+ 用户）。开发语义适配器与数据转换管道，将数据写入知识图谱（RDF/SAREF）。实现边缘-云 IoT 架构，支持实时异常检测与预测调度；集成 Knowledge Engine（KE）与可解释 AI，用于跨建筑能源灵活性操作与优化。"
+					result="支持 15 栋建筑的能耗监控、分布式能源资产语义对齐，以及电网故障检测/预测维护；在 HEDGE-IoT 会议完成展示，支撑 50+ 研究人员开展灵活性服务与预测优化。"
+					reflection="深化了语义 IoT 架构、知识图谱、边缘-云计算、可解释 AI（能源系统）与大规模协作平台工程能力。"
+				/>
+				<CVProject 
+					title="数据工程师 — 荷兰新闻档案网络爬虫"
+					date="2024.02-2024.07"
+					organization="阿姆斯特丹大学"
+					background="大规模研究需要高完整性的新闻数据集。"
+					task="开发高效网络爬虫，实现自动化数据提取与结构化。"
+					action="实现反屏蔽与相关性过滤算法，自动处理超过 100 万篇新闻文章。"
+					result="实现 99% 数据完整性，为研究提供可靠数据集。"
+					reflection="提升了自动化、数据质量保障与大规模数据工程能力。"
+				/>
+			</div>
+		</CVSection>
+
 		<CVSection icon="fa-solid fa-trophy" title="主要项目和成就">
 			<div class="space-y-4 text-gray-700">
 				<CVProject 
@@ -63,54 +104,33 @@ import CVTwoColumn from '../../components/cv/CVTwoColumn.astro';
 					date="2024.07-2026.01"
 					organization="阿姆斯特丹自由大学 & 北京工业大学"
 					background="轨迹预测模型受益于跨任务知识迁移，但往往缺乏高效的蒸馏方法。"
-					task="开发知识蒸馏框架，通过表示对齐实现地图匹配轨迹预测的SOTA性能。"
+					task="开发知识蒸馏框架，通过表示对齐实现地图匹配轨迹预测的 SOTA 性能。"
 					action="设计并实现跨任务蒸馏模型与表示对齐技术，进行全面基准评估。"
-					result="通过高效表示对齐匹配SOTA性能。论文最终成绩8/10，硕士总平均分8/10。"
+					result="通过高效表示对齐匹配 SOTA 性能。论文最终成绩 8/10，硕士总平均分 8/10。"
 					reflection="深化了知识蒸馏、轨迹预测和跨任务迁移学习的专业能力。"
 				/>
 				<CVProject 
-					title="HedgeIoT: 物联网数据科学平台与机器学习工程"
-					date="2024.07-2024.09"
+					title="学士论文：异构物联网数据的可解释 AI 处理"
 					organization="阿姆斯特丹自由大学"
-					background="大学需要可扩展的协作物联网和机器学习研究平台。"
-					task="作为研究助理，负责平台设计和部署，实施实时数据工作流。"
-					action="构建和部署支持50+用户的Docker化JupyterHub平台，设计实时数据收集和机器学习管道，主导会议演示开发。"
-					result="平台实现高效协作和实时数据分析，在HedgeIoT会议展示，支持50+研究人员。"
-					reflection="增强了大规模系统设计、跨团队沟通和实用机器学习部署能力。"
-				/>
-				<CVProject 
-					title="荷兰新闻档案网络爬虫"
-					date="2022.02-2025.03"
-					organization="阿姆斯特丹大学"
-					background="大规模研究需要高完整性新闻数据集。"
-					task="开发高效网络爬虫进行自动化数据提取和结构化。"
-					action="实施反屏蔽和相关性过滤算法，自动处理超过100万篇新闻文章。"
-					result="实现99%数据完整性，为研究提供可靠数据集。"
-					reflection="增强了自动化、数据质量保证和大规模数据工程能力。"
-				/>
-				<CVProject 
-					title="学士论文：异构物联网数据的可解释AI处理"
-					organization="阿姆斯特丹自由大学"
-					background="整合多源物联网数据需要透明、可互操作和可解释的AI解决方案。"
+					background="整合多源物联网数据需要透明、可互操作和可解释的 AI 解决方案。"
 					task="设计可解释模型和数据管道来统一异构物联网数据。"
-					action="开发设备行为预测模型，基于RDF和SPARQL实施数据集成，确保模型可解释性。"
-					result="交付稳健的物联网数据集成和预测系统，获得8.0分，展示了可解释AI和语义数据集成的实用价值。"
-					reflection="加强了语义数据集成、时间序列预测和AI透明性基础。"
+					action="开发设备行为预测模型，基于 RDF 和 SPARQL 实施数据集成，确保模型可解释性。"
+					result="交付稳健的物联网数据集成和预测系统，获得 8.0 分，展示了可解释 AI 和语义数据集成的实用价值。"
+					reflection="加强了语义数据集成、时间序列预测和 AI 透明性基础。"
 				/>
 			</div>
 		</CVSection>
 
 		<CVSection icon="fa-solid fa-gears" title="技术技能">
 			<div class="text-gray-700 space-y-1">
-				<CVSkillItem label="编程语言" content="Python (高级), Bash, SQL" />
-				<CVSkillItem label="机器学习与数据" content="PyTorch, TensorFlow, scikit-learn, XGBoost, Pandas, Polars, NumPy, Pydantic" />
-				<CVSkillItem label="AI智能体与LLM框架" content="LangGraph, LangChain, LangSmith, 提示工程, RAG系统, 多智能体编排" />
-				<CVSkillItem label="LLM开发与评估" content="模型微调, 评估数据集创建, 性能基准测试, AI系统A/B测试" />
-				<CVSkillItem label="Web/API" content="FastAPI, Flask, Django, Streamlit" />
-				<CVSkillItem label="NLP与大模型" content="Transformers (自主开发), Hugging Face (语音检测, 图像转LaTeX), spaCy, NLTK, OpenAI API, Claude API" />
-				<CVSkillItem label="数据工程" content="GeoPandas, NetworkX, OSMnx, RDFlib, GraphDB, JupyterHub, Grafana, 向量数据库" />
-				<CVSkillItem label="DevOps" content="Docker, Docker Compose, NGINX, CI/CD, Linux (6年以上日常使用)" />
-				<CVSkillItem label="远程/高级" content="NVIM/LunarVim, Python多进程/多线程, LaTeX, Markdown" />
+				<CVSkillItem label="语言" content="Python（高级）, TypeScript/JavaScript, SQL, Bash" />
+				<CVSkillItem label="机器学习与深度学习" content="PyTorch, TensorFlow, scikit-learn, XGBoost, LightGBM, Keras, ONNX, Optuna" />
+				<CVSkillItem label="LLM 与生成式 AI" content="GPT-4, Claude API/Code, Qwen, DeepSeek, LLaMA, Fine-tuning（LoRA/QLoRA）, RLHF, Prompt Engineering, MCP" />
+				<CVSkillItem label="AI 智能体" content="LangGraph, LangChain, LangSmith, CrewAI, AutoGen, RAG, Multi-agent Systems, Function Calling, ReAct/CoT, Human-in-the-Loop" />
+				<CVSkillItem label="NLP 与 CV" content="Transformers, Hugging Face, spaCy, Sentence Transformers, Embedding Models, OCR" />
+				<CVSkillItem label="数据与数据库" content="Pandas, Polars, NumPy, Pydantic, ChromaDB, FAISS, Milvus, PostgreSQL, Redis, Elasticsearch, Apache Spark" />
+				<CVSkillItem label="基础设施" content="Docker, Kubernetes, Terraform, CI/CD（GitHub Actions, GitLab CI, Git Hooks）, MLflow, W&B, AWS（SageMaker/EC2/S3）, CUDA, vLLM, Linux（6+ 年）" />
+				<CVSkillItem label="Web 与 API" content="React, Next.js, Astro, FastAPI, Flask, Django, Streamlit, Gradio" />
 			</div>
 		</CVSection>
 
@@ -118,15 +138,8 @@ import CVTwoColumn from '../../components/cv/CVTwoColumn.astro';
 			<div class="text-gray-700">担任理学院学生会传播委员会主席：主持会议，分配任务，协调沟通。<br/>主导实践课程并指导10+学生进行机器学习和数据项目。</div>
 		</CVSection>
 
-		<CVSection icon="fa-solid fa-book" title="核心课程">
-			<div class="text-gray-700 space-y-1">
-				<CVListItem label="深度学习">自定义CNN、DNN实现</CVListItem>
-				<CVListItem label="自然语言处理">Transformers, Hugging Face, 高级NLP</CVListItem>
-				<CVListItem label="数据挖掘技术">XGBoost排序, Kaggle竞赛</CVListItem>
-				<CVListItem label="强化学习项目">数据中心优化强化学习</CVListItem>
-				<CVListItem label="对话机器人">基于OpenAI API的对话智能体，在班级竞赛中获得第一名 (1/8队伍)</CVListItem>
-				<CVListItem label="进化计算">游戏AI的自定义进化算法</CVListItem>
-			</div>
+		<CVSection icon="fa-solid fa-book" title="关键课程">
+			<div class="text-gray-700">深度学习（自研 CNN/DNN）· 自然语言处理（Transformers, Hugging Face）· 数据挖掘（XGBoost, Kaggle）· 强化学习（数据中心优化）· 对话式 AI（OpenAI API 智能体，班级竞赛第 1 名）· 进化计算</div>
 		</CVSection>
 	</div>
 </div>
