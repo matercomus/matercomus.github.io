@@ -6,6 +6,7 @@ language: 'en'
 import CVHeader from '../../components/cv/CVHeader.astro';
 import CVSection from '../../components/cv/CVSection.astro';
 import CVProject from '../../components/cv/CVProject.astro';
+import CVWorkExp from '../../components/cv/CVWorkExp.astro';
 import CVSkillItem from '../../components/cv/CVSkillItem.astro';
 import CVListItem from '../../components/cv/CVListItem.astro';
 import CVEducationItem from '../../components/cv/CVEducationItem.astro';
@@ -63,35 +64,23 @@ import CVTwoColumn from '../../components/cv/CVTwoColumn.astro';
 
 		<CVSection icon="fa-solid fa-briefcase" title="Work Experience">
 			<div class="space-y-4 text-gray-700">
-				<CVProject 
+				<CVWorkExp 
 					title="AI Engineer & Product Developer"
 					date="2025.06-Present"
 					organization="Beijing Nievedor Intelligent Technology Co., Ltd."
-					background="Contributing to AI innovation in a rapidly growing company, responsible for AI product development, technical content creation, and strategic partnerships."
-					task="Developing internal AI-powered tools, designing software products, creating technical showcases of cutting-edge AI technologies, and managing cloud infrastructure."
-					action="Built RAG systems, summarization engines, and multi-provider LLM integrations (OpenAI/GPT-4, Anthropic/Claude, Google/Gemini) directly and via OpenRouter. Designed and deployed n8n-based AI automation pipelines for business process optimization. Created fully functional demos and video tutorials showcasing latest AI technologies (Sora2, NanoBanana, LibreChat, Cursor) published on Bilibili, Xiaohongshu, and WeChat. Led a collaboration with DiDi, integrating DiDi MCP and Gaode MCP into a custom LibreChat deployment, enabling seamless access to mobility and mapping services via conversational AI. Managed all cloud infrastructure using Terraform (IaC) on AWS."
-					result="Delivered multi-provider LLM integrations enabling cost-effective model routing. Published AI tech showcases reaching audiences across major Chinese social platforms. Successfully shipped DiDi×Gaode MCP integration as a production-ready conversational interface. Established scalable, reproducible cloud infrastructure via Terraform/AWS."
-					reflection="Gained deep experience in enterprise AI deployment, multi-provider LLM orchestration, MCP ecosystem integration, technical content creation for Chinese platforms, and Infrastructure as Code at scale."
+					description="Contributing to AI innovation in a rapidly growing company, responsible for AI product development, technical content creation, and strategic partnerships. Built RAG systems, summarization engines, and multi-provider LLM integrations (OpenAI/GPT-4, Anthropic/Claude, Google/Gemini) directly and via OpenRouter. Designed and deployed n8n-based AI automation pipelines for business process optimization. Created fully functional demos and video tutorials showcasing latest AI technologies (Sora2, NanoBanana, LibreChat, Cursor) published on Bilibili, Xiaohongshu, and WeChat. Led a collaboration with DiDi, integrating DiDi MCP and Gaode MCP into a custom LibreChat deployment, enabling seamless access to mobility and mapping services via conversational AI. Managed all cloud infrastructure using Terraform (IaC) on AWS. Delivered multi-provider LLM integrations enabling cost-effective model routing and published AI tech showcases reaching audiences across major Chinese social platforms. Successfully shipped DiDi×Gaode MCP integration as a production-ready conversational interface and established scalable, reproducible cloud infrastructure via Terraform/AWS."
 				/>
-				<CVProject 
+				<CVWorkExp 
 					title="Research Assistant — HEDGE-IoT: IoT Data Science Platform and ML Engineering (EU-Funded)"
 					date="2024.07-2025.10"
 					organization="Vrije Universiteit Amsterdam (with TNO & Arnhems Buiten)"
-					background="Part of the EU-funded HEDGE-IoT project deploying smart meters, V2G charging stations, residential batteries, heat pumps, and solar PVs across 15 buildings in Arnhem, Netherlands, coordinated through Building and Energy Management Systems (BEMS/EMS)."
-					task="As a research assistant, responsible for designing the IoT data science platform, implementing semantic data pipelines using SAREF ontologies, and building ML workflows for real-time energy optimization."
-					action="Built and deployed a Dockerized JupyterHub platform supporting 50+ users. Developed semantic adapters and data conversion pipelines into knowledge graphs using RDF/SAREF. Implemented edge-cloud IoT architecture enabling real-time anomaly detection and predictive energy scheduling. Integrated Knowledge Engine (KE) with explainable AI for cross-building energy flexibility operations."
-					result="Platform enabled real-time monitoring, semantic integration of distributed energy assets, and grid fault detection across 15 buildings. Successfully showcased at HEDGE-IoT conference, supporting 50+ researchers in flexibility services and predictive optimization."
-					reflection="Deepened expertise in semantic IoT architectures, knowledge graphs, edge-cloud computing, explainable AI for energy systems, and large-scale collaborative platform engineering."
+					description="Part of the EU-funded HEDGE-IoT project deploying smart meters, V2G charging stations, residential batteries, heat pumps, and solar PVs across 15 buildings in Arnhem, Netherlands, coordinated through Building and Energy Management Systems (BEMS/EMS). Designed the IoT data science platform, implemented semantic data pipelines using SAREF ontologies, and built ML workflows for real-time energy optimization. Built and deployed a Dockerized JupyterHub platform supporting 50+ users, developed semantic adapters and data conversion pipelines into knowledge graphs using RDF/SAREF, and implemented edge-cloud IoT architecture enabling real-time anomaly detection and predictive energy scheduling. Integrated Knowledge Engine (KE) with explainable AI for cross-building energy flexibility operations. The platform enabled real-time monitoring, semantic integration of distributed energy assets, and grid fault detection across 15 buildings, and was successfully showcased at the HEDGE-IoT conference, supporting 50+ researchers in flexibility services and predictive optimization."
 				/>
-				<CVProject 
+				<CVWorkExp 
 					title="Data Engineer — Dutch News Archive Web Crawler"
 					date="2024.02-2024.07"
 					organization="University of Amsterdam"
-					background="Large-scale research requires high-integrity news datasets."
-					task="Develop efficient web crawler for automated data extraction and structuring."
-					action="Implemented anti-blocking and relevance filtering algorithms, automated processing of over 1 million news articles."
-					result="Achieved 99% data integrity, providing reliable datasets for research."
-					reflection="Enhanced automation, data quality assurance, and large-scale data engineering capabilities."
+					description="Developed an efficient web crawler for automated data extraction and structuring to support large-scale research requiring high-integrity news datasets. Implemented anti-blocking and relevance filtering algorithms, automating the processing of over 1 million news articles and achieving 99% data integrity, providing reliable datasets for research."
 				/>
 			</div>
 		</CVSection>
